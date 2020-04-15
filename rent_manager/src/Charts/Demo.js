@@ -20,9 +20,6 @@ const mainStyle = makeStyles((theme) => ({
     margin: 0,
     padding: "1rem",
   },
-  chart: {
-    color: "#7DA5C6",
-  },
 }));
 
 export default function Demo() {
@@ -31,7 +28,7 @@ export default function Demo() {
     { category: "Csiszológépek", amount: 5 },
     { category: "Fúrók", amount: 1 },
     { category: "Faipari gépek", amount: 0 },
-    { category: "Tömörítőgépek", amount: 7 },
+    { category: "Tömörítőgépek", amount: 6 },
     { category: "Vizesvágók", amount: 1 },
     { category: "Egyebek", amount: 2 },
     { category: "Hőlégfúvók", amount: 1 },
@@ -46,8 +43,12 @@ export default function Demo() {
         <Paper className={classes.paper}>
           <Chart data={data}>
             <ArgumentAxis />
-            <ValueAxis max={10} className={classes.chart} />
-            <BarSeries valueField="amount" argumentField="category" />
+            <ValueAxis max={10} />
+            <BarSeries
+              valueField="amount"
+              argumentField="category"
+              fill="#587D80"
+            />
             <Title text="Purchase per category on this week" />
             <Animation />
           </Chart>
