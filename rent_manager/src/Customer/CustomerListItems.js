@@ -51,9 +51,8 @@ export default function CheckboxList() {
             button
             onClick={handleToggle(value)}
           >
-            <ListItemText id={labelId} primary={`Product ${value + 1}`} />
-            <ListItemText primary="Price" />
-            <ListItemText primary="Status" />
+            <ListItemText id={labelId} primary={`Customer ${value + 1}`} />
+            <ListItemText primary="Date of last purchase" />
             <ListItemSecondaryAction>
               <IconButton edge="end" aria-label="comments">
                 <EditIcon />
