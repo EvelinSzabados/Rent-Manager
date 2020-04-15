@@ -14,7 +14,6 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Switch, Route, BrowserRouter } from "react-router-dom";
 import MenuItems from "./MenuItems";
 import Demo from "../Charts/Demo";
-import "typeface-roboto";
 import logo from "../Images/logo.svg";
 import ProductList from "../ProductList/ProductList";
 import NewProduct from "../NewProduct/NewProduct";
