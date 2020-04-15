@@ -1,7 +1,7 @@
 import * as React from "react";
 import { useState } from "react";
 import Paper from "@material-ui/core/Paper";
-import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { makeStyles } from "@material-ui/core/styles";
 import Typography from "@material-ui/core/Typography";
 import {
   Chart,
@@ -29,7 +29,7 @@ const mainStyle = makeStyles((theme) => ({
 }));
 
 export default function Demo() {
-  const [data, setData] = useState([
+  const [data] = useState([
     { category: "Betonsimítók", amount: 3 },
     { category: "Csiszológépek", amount: 5 },
     { category: "Fúrók", amount: 1 },

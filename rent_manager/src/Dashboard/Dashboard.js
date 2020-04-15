@@ -11,12 +11,13 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import MenuItems from "./MenuItems";
 import Demo from "../Charts/Demo";
 import "typeface-roboto";
 import logo from "../Images/logo.svg";
 import ProductList from "../ProductList/ProductList";
+import NewProduct from "../NewProduct/NewProduct";
 const drawerWidth = 270;
 
 const mainStyle = makeStyles((theme) => ({
@@ -89,7 +90,11 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
-          <img src={logo} style={{ maxWidth: "50px", margin: "10px" }} />
+          <img
+            alt="logo"
+            src={logo}
+            style={{ maxWidth: "50px", margin: "10px" }}
+          />
           <Typography variant="h6" noWrap className={classes.title}>
             Rent Manager
           </Typography>
@@ -133,7 +138,7 @@ function ResponsiveDrawer(props) {
           <Switch>
             <Route exact path="/" render={() => <Demo />} />
             <Route path="/Route2" render={() => <ProductList />} />
-            <Route path="/Route3" render={() => <div>Page 3</div>} />
+            <Route path="/Route3" render={() => <NewProduct />} />
             <Route path="/Route4" render={() => <div>Page 4</div>} />
             <Route path="/Route5" render={() => <div>Page 5</div>} />
             <Route path="/Route6" render={() => <div>Page 6</div>} />
