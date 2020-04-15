@@ -13,6 +13,7 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
 import MenuItems from "./MenuItems";
+import Demo from "../Charts/Demo";
 
 const drawerWidth = 270;
 
@@ -126,7 +127,7 @@ function ResponsiveDrawer(props) {
           <div className={classes.toolbar} />
 
           <Switch>
-            <Route exact path="/" render={() => <div>Home Page</div>} />
+            <Route exact path="/" render={() => <Demo />} />
             <Route path="/Route2" render={() => <div>Page 2</div>} />
             <Route path="/Route3" render={() => <div>Page 3</div>} />
             <Route path="/Route4" render={() => <div>Page 4</div>} />
