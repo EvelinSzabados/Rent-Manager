@@ -1,10 +1,8 @@
 import React from "react";
 import TextField from "@material-ui/core/TextField";
 import { makeStyles } from "@material-ui/core/styles";
-import MenuItem from "@material-ui/core/MenuItem";
-import Select from "@material-ui/core/Select";
-import InputLabel from "@material-ui/core/InputLabel";
 import Button from "@material-ui/core/Button";
+import styled from "styled-components";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -17,11 +15,24 @@ const useStyles = makeStyles((theme) => ({
       width: 400,
       padding: "1rem",
     },
-    selectEmpty: {
-      marginTop: theme.spacing(2),
-    },
   },
 }));
+const Select = styled.select`
+  border: none;
+  background-color: white;
+  padding: 1rem;
+  width: 30vw;
+  border: 1px solid #ccc;
+  margin: 1rem;
+  border-radius: 5px;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    border-color: #404040;
+    cursor: pointer;
+  }
+`;
 
 export default function Form() {
   const classes = useStyles();
@@ -33,7 +44,7 @@ export default function Form() {
     for (let input of inputs) {
       console.log(input.value);
     }
-    const category = document.querySelector("#category-select");
+    const category = document.querySelector("#mySelect");
     console.log(category.value);
   }
 
@@ -57,6 +68,14 @@ export default function Form() {
             placeholder="Price"
             variant="outlined"
           />
+        </div>
+        <div>
+          <Select id="mySelect">
+            <option value="apple">Apple</option>
+            <option value="orange">Orange</option>
+            <option value="pineapple">Pineapple</option>
+            <option value="banana">Banana</option>
+          </Select>
         </div>
 
         <Button
