@@ -9,6 +9,9 @@ const useStyles = makeStyles((theme) => ({
     "& .MuiTextField-root": {
       margin: theme.spacing(2),
       width: "30vw",
+      "@media (max-width:600px)": {
+        width: "80vw",
+      },
     },
     formControl: {
       margin: theme.spacing(3),
