@@ -14,6 +14,7 @@ import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
 import MenuItems from "./MenuItems";
 import Demo from "../Charts/Demo";
+import "typeface-roboto";
 
 const drawerWidth = 270;
 
