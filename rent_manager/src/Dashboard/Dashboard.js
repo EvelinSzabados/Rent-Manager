@@ -13,7 +13,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
 import MenuItems from "./MenuItems";
-
+import Demo from "../Charts/Demo";
+import "typeface-roboto";
+import logo from "../Images/logo.svg";
 const drawerWidth = 270;
 
 const mainStyle = makeStyles((theme) => ({
@@ -74,6 +76,7 @@ function ResponsiveDrawer(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
+
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton
@@ -85,6 +88,7 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
+          <img src={logo} style={{ maxWidth: "50px", margin: "10px" }} />
           <Typography variant="h6" noWrap className={classes.title}>
             Rent Manager
           </Typography>
@@ -126,7 +130,7 @@ function ResponsiveDrawer(props) {
           <div className={classes.toolbar} />
 
           <Switch>
-            <Route exact path="/" render={() => <div>Home Page</div>} />
+            <Route exact path="/" render={() => <Demo />} />
             <Route path="/Route2" render={() => <div>Page 2</div>} />
             <Route path="/Route3" render={() => <div>Page 3</div>} />
             <Route path="/Route4" render={() => <div>Page 4</div>} />
