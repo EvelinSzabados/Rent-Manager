@@ -15,7 +15,7 @@ import { Switch, Route, Link, BrowserRouter } from "react-router-dom";
 import MenuItems from "./MenuItems";
 import Demo from "../Charts/Demo";
 import "typeface-roboto";
-
+import logo from "../Images/logo.svg";
 const drawerWidth = 270;
 
 const mainStyle = makeStyles((theme) => ({
@@ -76,6 +76,7 @@ function ResponsiveDrawer(props) {
   return (
     <div className={classes.root}>
       <CssBaseline />
+
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
           <IconButton
@@ -87,6 +88,7 @@ function ResponsiveDrawer(props) {
           >
             <MenuIcon />
           </IconButton>
+          <img src={logo} style={{ maxWidth: "50px", margin: "10px" }} />
           <Typography variant="h6" noWrap className={classes.title}>
             Rent Manager
           </Typography>
