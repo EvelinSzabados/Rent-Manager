@@ -16,6 +16,7 @@ import MenuItems from "./MenuItems";
 import Demo from "../Charts/Demo";
 import "typeface-roboto";
 import logo from "../Images/logo.svg";
+import ProductList from "../ProductList/ProductList";
 const drawerWidth = 270;
 
 const mainStyle = makeStyles((theme) => ({
@@ -131,7 +132,7 @@ function ResponsiveDrawer(props) {
 
           <Switch>
             <Route exact path="/" render={() => <Demo />} />
-            <Route path="/Route2" render={() => <div>Page 2</div>} />
+            <Route path="/Route2" render={() => <ProductList />} />
             <Route path="/Route3" render={() => <div>Page 3</div>} />
             <Route path="/Route4" render={() => <div>Page 4</div>} />
             <Route path="/Route5" render={() => <div>Page 5</div>} />
