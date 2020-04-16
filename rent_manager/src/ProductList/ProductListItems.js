@@ -1,36 +1,37 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { ProductContext } from "../context/ProductContext";
-
+import axios from "axios";
 import MaterialTable from "material-table";
 
 export default function ProductListItems() {
   const { product } = useContext(ProductContext);
+
   const productDataContainer = [];
   product.map((prod) => {
     let data = {
-      serial: " CM" + prod.name[0] + "ID" + prod.id,
+      id: prod.id,
       name: prod.name,
-      statusName: prod.status_id,
       price: prod.price,
-      categoryName: prod.category_id,
+      category_id: prod.category_id,
+      status_id: prod.status_id,
     };
     productDataContainer.push(data);
   });
-  const [productData, setProductData] = useState(productDataContainer);
+
+  const [productData] = useState(productDataContainer);
 
   const [state, setState] = useState({
     columns: [
-      { title: "Serial", field: "serial" },
       { title: "Name", field: "name" },
       {
         title: "Status",
-        field: "statusName",
+        field: "status_id",
         lookup: { 1: "Available", 2: "Rented", 3: "Out of Operation" },
       },
       { title: "Price", field: "price", type: "numeric" },
       {
         title: "Category",
-        field: "categoryName",
+        field: "category_id",
         lookup: {
           1: "Betonkeverők",
           2: "Csiszológépek",
@@ -47,8 +48,25 @@ export default function ProductListItems() {
         },
       },
     ],
-    data: productDataContainer,
+    data: productData,
   });
+
+  function handleEdit(product) {
+    axios.put("http://localhost:8080/product/modify", product, {
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+  function handleDelete(product) {
+    axios.delete("http://localhost:8080/product/delete", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: product,
+    });
+  }
+  function addProduct(product) {
+    axios.post("http://localhost:8080/product/add", product);
+  }
 
   return (
     <MaterialTable
@@ -63,6 +81,8 @@ export default function ProductListItems() {
               setState((prevState) => {
                 const data = [...prevState.data];
                 data.push(newData);
+                newData["id"] = 69;
+                addProduct(newData);
                 return { ...prevState, data };
               });
             }, 600);
@@ -75,6 +95,7 @@ export default function ProductListItems() {
                 setState((prevState) => {
                   const data = [...prevState.data];
                   data[data.indexOf(oldData)] = newData;
+                  handleEdit(data[data.indexOf(newData)]);
                   return { ...prevState, data };
                 });
               }
@@ -86,7 +107,19 @@ export default function ProductListItems() {
               resolve();
               setState((prevState) => {
                 const data = [...prevState.data];
+                const dataToSend = data[data.indexOf(oldData)];
+                const dataToDelete = {
+                  id: dataToSend.id,
+                  name: dataToSend.name,
+                  status_id: dataToSend.status_id,
+                  price: dataToSend.price,
+                  category_id: dataToSend.category_id,
+                };
+                console.log(dataToDelete);
+                handleDelete(dataToDelete);
+
                 data.splice(data.indexOf(oldData), 1);
+
                 return { ...prevState, data };
               });
             }, 600);
