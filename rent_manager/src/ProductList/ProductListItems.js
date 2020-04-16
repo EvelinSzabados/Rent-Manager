@@ -8,6 +8,7 @@ export default function ProductListItems() {
   const productDataContainer = [];
   product.map((prod) => {
     let data = {
+      serial: " CM" + prod.name[0] + "ID" + prod.id,
       name: prod.name,
       statusName: prod.status_id,
       price: prod.price,
@@ -19,6 +20,7 @@ export default function ProductListItems() {
 
   const [state, setState] = useState({
     columns: [
+      { title: "Serial", field: "serial" },
       { title: "Name", field: "name" },
       {
         title: "Status",
@@ -50,7 +52,7 @@ export default function ProductListItems() {
 
   return (
     <MaterialTable
-      title="Editable Example"
+      title="Product List"
       columns={state.columns}
       data={productData}
       editable={{
