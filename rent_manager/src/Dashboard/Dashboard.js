@@ -20,6 +20,8 @@ import NewProduct from "../NewProduct/NewProduct";
 import CustomerList from "../Customer/CustomerList";
 import NewCustomer from "../NewCustomer/NewCustomer";
 import NewRent from "../NewRent/NewRent";
+import { ProductProvider } from "../context/ProductContext";
+
 const drawerWidth = 270;
 
 const mainStyle = makeStyles((theme) => ({
@@ -139,7 +141,9 @@ function ResponsiveDrawer(props) {
 
           <Switch>
             <Route exact path="/" render={() => <Demo />} />
-            <Route path="/Route2" render={() => <ProductList />} />
+            <ProductProvider>
+              <Route path="/Route2" render={() => <ProductList />} />
+            </ProductProvider>
             <Route path="/Route3" render={() => <NewProduct />} />
             <Route path="/Route4" render={() => <CustomerList />} />
             <Route path="/Route5" render={() => <NewCustomer />} />
