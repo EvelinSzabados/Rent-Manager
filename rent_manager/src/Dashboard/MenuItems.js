@@ -19,7 +19,7 @@ export default function MenuItems() {
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItem>
-      <ListItem button component={Link} to={"/Route2"}>
+      <ListItem button component={Link} to={"/products"}>
         <ListItemIcon>
           <ListIcon />
         </ListItemIcon>

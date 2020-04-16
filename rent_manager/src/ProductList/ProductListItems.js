@@ -1,51 +1,95 @@
 import React, { useContext, useState } from "react";
-import { makeStyles } from "@material-ui/core/styles";
-import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemSecondaryAction from "@material-ui/core/ListItemSecondaryAction";
-import ListItemText from "@material-ui/core/ListItemText";
-import IconButton from "@material-ui/core/IconButton";
-import DeleteOutlineIcon from "@material-ui/icons/DeleteOutline";
-import EditIcon from "@material-ui/icons/Edit";
 import { ProductContext } from "../context/ProductContext";
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-    maxWidth: "70vw",
-    backgroundColor: theme.palette.background.paper,
-    "@media (max-width:600px)": {
-      maxWidth: "100vw",
-      margin: 0,
-    },
-  },
-}));
+import MaterialTable from "material-table";
 
-export default function CheckboxList() {
+export default function ProductListItems() {
   const { product } = useContext(ProductContext);
-  const classes = useStyles();
+  const productDataContainer = [];
+  product.map((prod) => {
+    let data = {
+      name: prod.name,
+      statusName: prod.status_id,
+      price: prod.price,
+      categoryName: prod.category_id,
+    };
+    productDataContainer.push(data);
+  });
+  const [productData, setProductData] = useState(productDataContainer);
+
+  const [state, setState] = useState({
+    columns: [
+      { title: "Name", field: "name" },
+      {
+        title: "Status",
+        field: "statusName",
+        lookup: { 1: "Available", 2: "Rented", 3: "Out of Operation" },
+      },
+      { title: "Price", field: "price", type: "numeric" },
+      {
+        title: "Category",
+        field: "categoryName",
+        lookup: {
+          1: "Betonkeverők",
+          2: "Csiszológépek",
+          3: "Fúrók",
+          4: "Faipari gépek",
+          5: "Tömörítőgépek",
+
+          6: "Egyebek",
+          7: "Roppantók",
+          8: "Áramfejlesztők",
+          9: "Betonsimítók",
+          10: "Hőlégfúvók",
+          11: "Vizesvágók",
+        },
+      },
+    ],
+    data: productDataContainer,
+  });
 
   return (
-    <List className={classes.root}>
-      {product.map((value) => {
-        const labelId = `checkbox-list-label-${value}`;
-
-        return (
-          <ListItem color={"primary"} key={value} role={undefined} dense button>
-            <ListItemText id={labelId} primary={value.name} />
-            <ListItemText primary={value.price} />
-            <ListItemText primary={value.statusName} />
-            <ListItemSecondaryAction>
-              <IconButton edge="end" aria-label="comments">
-                <EditIcon />
-              </IconButton>
-              <IconButton edge="end" aria-label="comments">
-                <DeleteOutlineIcon />
-              </IconButton>
-            </ListItemSecondaryAction>
-          </ListItem>
-        );
-      })}
-    </List>
+    <MaterialTable
+      title="Editable Example"
+      columns={state.columns}
+      data={productData}
+      editable={{
+        onRowAdd: (newData) =>
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+              setState((prevState) => {
+                const data = [...prevState.data];
+                data.push(newData);
+                return { ...prevState, data };
+              });
+            }, 600);
+          }),
+        onRowUpdate: (newData, oldData) =>
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+              if (oldData) {
+                setState((prevState) => {
+                  const data = [...prevState.data];
+                  data[data.indexOf(oldData)] = newData;
+                  return { ...prevState, data };
+                });
+              }
+            }, 600);
+          }),
+        onRowDelete: (oldData) =>
+          new Promise((resolve) => {
+            setTimeout(() => {
+              resolve();
+              setState((prevState) => {
+                const data = [...prevState.data];
+                data.splice(data.indexOf(oldData), 1);
+                return { ...prevState, data };
+              });
+            }, 600);
+          }),
+      }}
+    />
   );
 }
