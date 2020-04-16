@@ -25,24 +25,14 @@ export default function MenuItems() {
         </ListItemIcon>
         <ListItemText primary="Products" />
       </ListItem>
-      <ListItem button component={Link} to={"/Route3"}>
-        <ListItemIcon>
-          <AddCircleOutlineIcon />
-        </ListItemIcon>
-        <ListItemText primary="New Product" />
-      </ListItem>
+
       <ListItem button component={Link} to={"/Route4"}>
         <ListItemIcon>
           <PeopleIcon />
         </ListItemIcon>
         <ListItemText primary="Customers" />
       </ListItem>
-      <ListItem button component={Link} to={"/Route5"}>
-        <ListItemIcon>
-          <GroupAddIcon />
-        </ListItemIcon>
-        <ListItemText primary="New customer" />
-      </ListItem>
+
       <ListItem button component={Link} to={"/Route6"}>
         <ListItemIcon>
           <ReceiptIcon />

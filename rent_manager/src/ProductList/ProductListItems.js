@@ -6,19 +6,7 @@ import MaterialTable from "material-table";
 export default function ProductListItems() {
   const { product } = useContext(ProductContext);
 
-  const productDataContainer = [];
-  product.map((prod) => {
-    let data = {
-      id: prod.id,
-      name: prod.name,
-      price: prod.price,
-      category_id: prod.category_id,
-      status_id: prod.status_id,
-    };
-    productDataContainer.push(data);
-  });
-
-  const [productData] = useState(productDataContainer);
+  // const [productData] = useState(product);
 
   const [state, setState] = useState({
     columns: [
@@ -28,7 +16,7 @@ export default function ProductListItems() {
         field: "status_id",
         lookup: { 1: "Available", 2: "Rented", 3: "Out of Operation" },
       },
-      { title: "Price", field: "price", type: "numeric" },
+      { title: "Price (Ft)", field: "price", type: "numeric" },
       {
         title: "Category",
         field: "category_id",
@@ -48,8 +36,13 @@ export default function ProductListItems() {
         },
       },
     ],
-    data: productData,
   });
+
+  useEffect(() => {
+    setState((oldState) => {
+      return { ...oldState, data: product };
+    });
+  }, [product]);
 
   function handleEdit(product) {
     axios.put("http://localhost:8080/product/modify", product, {
@@ -72,7 +65,7 @@ export default function ProductListItems() {
     <MaterialTable
       title="Product List"
       columns={state.columns}
-      data={productData}
+      data={state.data}
       editable={{
         onRowAdd: (newData) =>
           new Promise((resolve) => {
