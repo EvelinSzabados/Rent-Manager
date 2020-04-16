@@ -141,7 +141,7 @@ function ResponsiveDrawer(props) {
 
           <Route exact path="/" render={() => <Demo />} />
           <ProductProvider>
-            <Route path="/Route2" render={() => <ProductList />} />
+            <Route path="/products" render={() => <ProductList />} />
           </ProductProvider>
           <Route path="/Route3" render={() => <NewProduct />} />
           <Route path="/Route4" render={() => <CustomerList />} />
