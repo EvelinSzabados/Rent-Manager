@@ -29,7 +29,20 @@ export default function ProductListItems() {
       {
         title: "Category",
         field: "categoryName",
-        lookup: { 1: "Betonkeverő", 2: "Betonsimító" },
+        lookup: {
+          1: "Betonkeverők",
+          2: "Csiszológépek",
+          3: "Fúrók",
+          4: "Faipari gépek",
+          5: "Tömörítőgépek",
+
+          6: "Egyebek",
+          7: "Roppantók",
+          8: "Áramfejlesztők",
+          9: "Betonsimítók",
+          10: "Hőlégfúvók",
+          11: "Vizesvágók",
+        },
       },
     ],
     data: productDataContainer,
