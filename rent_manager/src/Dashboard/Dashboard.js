@@ -139,16 +139,14 @@ function ResponsiveDrawer(props) {
         <main className={classes.content}>
           <div className={classes.toolbar} />
 
-          <Switch>
-            <Route exact path="/" render={() => <Demo />} />
-            <ProductProvider>
-              <Route path="/Route2" render={() => <ProductList />} />
-            </ProductProvider>
-            <Route path="/Route3" render={() => <NewProduct />} />
-            <Route path="/Route4" render={() => <CustomerList />} />
-            <Route path="/Route5" render={() => <NewCustomer />} />
-            <Route path="/Route6" render={() => <NewRent />} />
-          </Switch>
+          <Route exact path="/" render={() => <Demo />} />
+          <ProductProvider>
+            <Route path="/Route2" render={() => <ProductList />} />
+          </ProductProvider>
+          <Route path="/Route3" render={() => <NewProduct />} />
+          <Route path="/Route4" render={() => <CustomerList />} />
+          <Route path="/Route5" render={() => <NewCustomer />} />
+          <Route path="/Route6" render={() => <NewRent />} />
         </main>
       </BrowserRouter>
     </div>
