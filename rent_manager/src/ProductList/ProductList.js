@@ -1,6 +1,5 @@
-import React, { useContext, useState, useEffect } from "react";
-import { ProductContext } from "../context/ProductContext";
-import { CategoryContext } from "../context/CategoryContext";
+import React, { useContext } from "react";
+import { TableContext } from "../context/TableContext";
 import axios from "axios";
 import MaterialTable from "material-table";
 
@@ -9,40 +8,8 @@ export default function ProductListItems() {
   const addUrl = "http://localhost:8080/product/add";
   const deleteUrl = "http://localhost:8080/product/delete"
 
-  const { product } = useContext(ProductContext);
-  const { category } = useContext(CategoryContext);
-  const [state, setState] = useState({});
+  const [state, setState] = useContext(TableContext)
 
-  useEffect(() => {
-    let categoryObj = {};
-    category.map(category => { categoryObj[category.id] = category.categoryName })
-
-    setState((oldState) => {
-      return { ...oldState, data: product };
-    });
-    setState((oldState) => {
-      return {
-        ...oldState,
-        columns: [
-          { title: "Name", field: "name" },
-          {
-            title: "Status",
-            field: "status_id",
-            lookup: { 1: "Available", 2: "Rented", 3: "Out of Operation" },
-          },
-          { title: "Price (Ft)", field: "price", type: "numeric" },
-          {
-            title: "Category",
-            field: "category_id",
-            lookup: categoryObj,
-          }
-        ]
-      };
-    });
-
-
-    console.log(state)
-  }, [product, category]);
 
   function handleEdit(product) {
     axios.put(modifyUrl, product, {
