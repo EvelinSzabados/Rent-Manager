@@ -12,9 +12,13 @@ const theme = createMuiTheme({
     error: {
       main: "#dc004e",
     },
+    action: {
+      main: "#CB7835",
+    },
     background: {
       default: "#fff",
     },
+
   },
 });
 
