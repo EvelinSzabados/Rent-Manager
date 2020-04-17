@@ -54,7 +54,7 @@ export default function Demo() {
             <BarSeries
               valueField="amount"
               argumentField="category"
-              fill="#587D80"
+              fill="#385A7B"
             />
             <Tooltip />
             <Title text="Purchase per category on this week" />

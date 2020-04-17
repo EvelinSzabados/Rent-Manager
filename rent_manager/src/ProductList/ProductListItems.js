@@ -6,8 +6,6 @@ import MaterialTable from "material-table";
 export default function ProductListItems() {
   const { product } = useContext(ProductContext);
 
-  // const [productData] = useState(product);
-
   const [state, setState] = useState({
     columns: [
       { title: "Name", field: "name" },
@@ -108,7 +106,7 @@ export default function ProductListItems() {
                   price: dataToSend.price,
                   category_id: dataToSend.category_id,
                 };
-                console.log(dataToDelete);
+
                 handleDelete(dataToDelete);
 
                 data.splice(data.indexOf(oldData), 1);
