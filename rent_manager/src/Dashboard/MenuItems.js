@@ -13,7 +13,7 @@ export default function MenuItems() {
     <React.Fragment>
       <ListItem button component={Link} to={"/"}>
         <ListItemIcon>
-          <DashboardIcon />
+          <DashboardIcon color="primary" />
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItem>
@@ -26,14 +26,14 @@ export default function MenuItems() {
 
       <ListItem button component={Link} to={"/customers"}>
         <ListItemIcon>
-          <PeopleIcon />
+          <PeopleIcon color="secondary" />
         </ListItemIcon>
         <ListItemText primary="Customers" />
       </ListItem>
 
       <ListItem button component={Link} to={"/rent"}>
         <ListItemIcon>
-          <ReceiptIcon />
+          <ReceiptIcon color="error" />
         </ListItemIcon>
         <ListItemText primary="New rent" />
       </ListItem>
