@@ -35,9 +35,6 @@ export const TableProvider = (props) => {
                 ]
             };
         });
-
-
-
     }, [product, category]);
 
 
