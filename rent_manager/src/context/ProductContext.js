@@ -4,10 +4,11 @@ import axios from "axios";
 export const ProductContext = createContext();
 
 export const ProductProvider = (props) => {
+  const url = "http://localhost:8080/product/all";
   const [product, setProduct] = useState([]);
 
   const fetchAllProduct = () => {
-    axios.get("http://localhost:8080/product/all").then((resp) => {
+    axios.get(url).then((resp) => {
       setProduct(resp.data);
     });
   };

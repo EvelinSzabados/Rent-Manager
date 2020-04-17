@@ -4,10 +4,8 @@ import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
 import PeopleIcon from "@material-ui/icons/People";
-import GroupAddIcon from "@material-ui/icons/GroupAdd";
 import { Link } from "react-router-dom";
 import ListIcon from "@material-ui/icons/List";
-import AddCircleOutlineIcon from "@material-ui/icons/AddCircleOutline";
 import ReceiptIcon from "@material-ui/icons/Receipt";
 
 export default function MenuItems() {
@@ -26,14 +24,14 @@ export default function MenuItems() {
         <ListItemText primary="Products" />
       </ListItem>
 
-      <ListItem button component={Link} to={"/Route4"}>
+      <ListItem button component={Link} to={"/customers"}>
         <ListItemIcon>
           <PeopleIcon />
         </ListItemIcon>
         <ListItemText primary="Customers" />
       </ListItem>
 
-      <ListItem button component={Link} to={"/Route6"}>
+      <ListItem button component={Link} to={"/rent"}>
         <ListItemIcon>
           <ReceiptIcon />
         </ListItemIcon>
