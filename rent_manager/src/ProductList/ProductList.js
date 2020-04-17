@@ -1,54 +1,56 @@
 import React, { useContext, useState, useEffect } from "react";
 import { ProductContext } from "../context/ProductContext";
+import { CategoryContext } from "../context/CategoryContext";
 import axios from "axios";
 import MaterialTable from "material-table";
 
 export default function ProductListItems() {
+  const modifyUrl = "http://localhost:8080/product/modify";
+  const addUrl = "http://localhost:8080/product/add";
+  const deleteUrl = "http://localhost:8080/product/delete"
+
   const { product } = useContext(ProductContext);
-
-  const [state, setState] = useState({
-    columns: [
-      { title: "Name", field: "name" },
-      {
-        title: "Status",
-        field: "status_id",
-        lookup: { 1: "Available", 2: "Rented", 3: "Out of Operation" },
-      },
-      { title: "Price (Ft)", field: "price", type: "numeric" },
-      {
-        title: "Category",
-        field: "category_id",
-        lookup: {
-          1: "Betonkeverők",
-          2: "Csiszológépek",
-          3: "Fúrók",
-          4: "Faipari gépek",
-          5: "Tömörítőgépek",
-
-          6: "Egyebek",
-          7: "Roppantók",
-          8: "Áramfejlesztők",
-          9: "Betonsimítók",
-          10: "Hőlégfúvók",
-          11: "Vizesvágók",
-        },
-      },
-    ],
-  });
+  const { category } = useContext(CategoryContext);
+  const [state, setState] = useState({});
 
   useEffect(() => {
+    let categoryObj = {};
+    category.map(category => { categoryObj[category.id] = category.categoryName })
+
     setState((oldState) => {
       return { ...oldState, data: product };
     });
-  }, [product]);
+    setState((oldState) => {
+      return {
+        ...oldState,
+        columns: [
+          { title: "Name", field: "name" },
+          {
+            title: "Status",
+            field: "status_id",
+            lookup: { 1: "Available", 2: "Rented", 3: "Out of Operation" },
+          },
+          { title: "Price (Ft)", field: "price", type: "numeric" },
+          {
+            title: "Category",
+            field: "category_id",
+            lookup: categoryObj,
+          }
+        ]
+      };
+    });
+
+
+    console.log(state)
+  }, [product, category]);
 
   function handleEdit(product) {
-    axios.put("http://localhost:8080/product/modify", product, {
+    axios.put(modifyUrl, product, {
       headers: { "Content-Type": "application/json" },
     });
   }
   function handleDelete(product) {
-    axios.delete("http://localhost:8080/product/delete", {
+    axios.delete(deleteUrl, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -56,7 +58,7 @@ export default function ProductListItems() {
     });
   }
   function addProduct(product) {
-    axios.post("http://localhost:8080/product/add", product);
+    axios.post(addUrl, product);
   }
 
   return (
@@ -98,19 +100,17 @@ export default function ProductListItems() {
               resolve();
               setState((prevState) => {
                 const data = [...prevState.data];
-                const dataToSend = data[data.indexOf(oldData)];
+                const rawData = data[data.indexOf(oldData)];
                 const dataToDelete = {
-                  id: dataToSend.id,
-                  name: dataToSend.name,
-                  status_id: dataToSend.status_id,
-                  price: dataToSend.price,
-                  category_id: dataToSend.category_id,
+                  id: rawData.id,
+                  name: rawData.name,
+                  status_id: rawData.status_id,
+                  price: rawData.price,
+                  category_id: rawData.category_id,
                 };
 
                 handleDelete(dataToDelete);
-
                 data.splice(data.indexOf(oldData), 1);
-
                 return { ...prevState, data };
               });
             }, 600);

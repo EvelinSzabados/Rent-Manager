@@ -19,6 +19,7 @@ import ProductList from "../ProductList/ProductList";
 import CustomerList from "../Customer/CustomerList";
 import NewRent from "../NewRent/NewRent";
 import { ProductProvider } from "../context/ProductContext";
+import { CategoryProvider } from "../context/CategoryContext";
 import DashboardStyle from "../Styles/DashboardStyle";
 
 
@@ -83,10 +84,12 @@ function ResponsiveDrawer(props) {
 
           <Route exact path="/" render={() => <Charts />} />
           <ProductProvider>
-            <Route path="/products" render={() => <ProductList />} />
+            <CategoryProvider>
+              <Route path="/products" render={() => <ProductList />} />
+            </CategoryProvider>
           </ProductProvider>
-          <Route path="/Route4" render={() => <CustomerList />} />
-          <Route path="/Route6" render={() => <NewRent />} />
+          <Route path="/customers" render={() => <CustomerList />} />
+          <Route path="/rent" render={() => <NewRent />} />
         </main>
       </BrowserRouter>
     </div>
