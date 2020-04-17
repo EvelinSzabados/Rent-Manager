@@ -11,14 +11,12 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
-import { Switch, Route, BrowserRouter } from "react-router-dom";
+import { Route, BrowserRouter } from "react-router-dom";
 import MenuItems from "./MenuItems";
-import Demo from "../Charts/Demo";
+import Charts from "../Charts/Charts";
 import logo from "../Images/logo.svg";
 import ProductList from "../ProductList/ProductList";
-import NewProduct from "../NewProduct/NewProduct";
 import CustomerList from "../Customer/CustomerList";
-import NewCustomer from "../NewCustomer/NewCustomer";
 import NewRent from "../NewRent/NewRent";
 import { ProductProvider } from "../context/ProductContext";
 
@@ -139,7 +137,7 @@ function ResponsiveDrawer(props) {
         <main className={classes.content}>
           <div className={classes.toolbar} />
 
-          <Route exact path="/" render={() => <Demo />} />
+          <Route exact path="/" render={() => <Charts />} />
           <ProductProvider>
             <Route path="/products" render={() => <ProductList />} />
           </ProductProvider>
