@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { ProductTableContext } from "../context/ProductTableContext";
 import MaterialTable from "material-table";
-import { handleDelete, handleEdit, addProduct } from "./DataHandler";
+import { handleDelete, handleEdit, addProduct } from "./ProductDataHandler";
 
 export default function ProductListItems() {
   const [state, setState] = useContext(ProductTableContext)
