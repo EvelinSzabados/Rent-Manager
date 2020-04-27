@@ -19,7 +19,7 @@ export default function Demo() {
       </Grid>
       <Grid item xs={12} md={2}>
         <Paper className={classes.paper}>
-          <Typography className={classes.h6} variant="h6" color="secondary">
+          <Typography className={classes.h6} variant="h6" color="error">
             New customers this week:
           </Typography>
           <Typography variant="h4">4</Typography>

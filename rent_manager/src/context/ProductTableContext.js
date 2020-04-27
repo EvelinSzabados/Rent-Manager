@@ -1,10 +1,10 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
-import { ProductContext } from "../context/ProductContext";
-import { CategoryContext } from "../context/CategoryContext";
+import { ProductContext } from "./ProductContext";
+import { CategoryContext } from "./CategoryContext";
 
-export const TableContext = createContext();
+export const ProductTableContext = createContext();
 
-export const TableProvider = (props) => {
+export const ProductTableProvider = (props) => {
     const { product } = useContext(ProductContext);
     const { category } = useContext(CategoryContext);
     const [state, setState] = useState([]);
@@ -32,6 +32,7 @@ export const TableProvider = (props) => {
                         field: "category_id",
                         lookup: categoryObj,
                     }
+
                 ]
             };
         });
@@ -39,8 +40,8 @@ export const TableProvider = (props) => {
 
 
     return (
-        <TableContext.Provider value={[state, setState]}>
+        <ProductTableContext.Provider value={[state, setState]}>
             {props.children}
-        </TableContext.Provider>
+        </ProductTableContext.Provider>
     );
 };

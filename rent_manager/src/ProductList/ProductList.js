@@ -1,16 +1,25 @@
 import React, { useContext } from "react";
-import { TableContext } from "../context/TableContext";
+import { ProductTableContext } from "../context/ProductTableContext";
 import MaterialTable from "material-table";
 import { handleDelete, handleEdit, addProduct } from "./DataHandler";
 
 export default function ProductListItems() {
-  const [state, setState] = useContext(TableContext)
+  const [state, setState] = useContext(ProductTableContext)
 
   return (
+
     <MaterialTable
       title="Product List"
       columns={state.columns}
       data={state.data}
+      options={{
+        headerStyle: {
+          color: 'teal',
+          fontWeight: 'bold',
+
+        },
+
+      }}
       editable={{
         onRowAdd: (newData) =>
           new Promise((resolve) => {
@@ -62,5 +71,6 @@ export default function ProductListItems() {
           }),
       }}
     />
+
   );
 }
