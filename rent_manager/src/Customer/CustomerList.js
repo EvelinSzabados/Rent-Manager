@@ -58,10 +58,11 @@ export default function CustomerList() {
                 const rawData = data[data.indexOf(oldData)];
                 const dataToDelete = {
                   id: rawData.id,
-                  name: rawData.name,
-                  status_id: rawData.status_id,
-                  price: rawData.price,
-                  category_id: rawData.category_id,
+                  first_name: rawData.first_name,
+                  last_name: rawData.last_name,
+                  email: rawData.email,
+                  phone_number: rawData.phone_number
+
                 };
 
                 handleDelete(dataToDelete);

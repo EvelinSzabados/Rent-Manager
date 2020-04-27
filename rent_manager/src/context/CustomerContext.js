@@ -4,7 +4,7 @@ import axios from "axios";
 export const CustomerContext = createContext();
 
 export const CustomerProvider = (props) => {
-    const url = "http://localhost:8080/customers/all";
+    const url = "http://localhost:8080/customer/all";
     const [customer, setCustomer] = useState([]);
 
     const fetchAllCustomer = () => {
@@ -16,8 +16,8 @@ export const CustomerProvider = (props) => {
     useEffect(fetchAllCustomer, []);
 
     return (
-        <CategoryContext.Provider value={{ customers: customer, fetchAllCustomer: fetchAllCustomer }}>
+        <CustomerContext.Provider value={{ customer: customer, fetchAllCustomer: fetchAllCustomer }}>
             {props.children}
-        </CategoryContext.Provider>
+        </CustomerContext.Provider>
     );
 };

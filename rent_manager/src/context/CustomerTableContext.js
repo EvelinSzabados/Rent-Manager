@@ -1,36 +1,34 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
-import { ProductContext } from "./ProductContext";
+import { CustomerContext } from "./CustomerContext";
 import { CategoryContext } from "./CategoryContext";
 
 export const CustomerTableContext = createContext();
 
 export const CustomerTableProvider = (props) => {
-    const { product } = useContext(ProductContext);
-    // set productContext to customerContext if it's ready
+    const { customer } = useContext(CustomerContext);
+
     const [state, setState] = useState([]);
 
     useEffect(() => {
 
         setState((oldState) => {
-            return { ...oldState, data: product };
+            return { ...oldState, data: customer };
         });
         setState((oldState) => {
             return {
                 ...oldState,
                 columns: [
-                    { title: "Name", field: "name" },
-                    {
-                        title: "Status",
-                        field: "status_id",
-                        lookup: { 1: "Available", 2: "Rented", 3: "Out of Operation" },
-                    },
-                    { title: "Price (Ft)", field: "price", type: "numeric" },
+                    { title: "First Name", field: "first_name" },
+                    { title: "Last Name", field: "last_name" },
+                    { title: "E-mail address", field: "email" },
+                    { title: "Address", field: "address" },
+                    { title: "Phone", field: "phone_number" },
 
 
                 ]
             };
         });
-    }, [product]);
+    }, [customer]);
 
 
     return (
