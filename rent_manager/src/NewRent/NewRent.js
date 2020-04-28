@@ -8,6 +8,7 @@ import Button from "@material-ui/core/Button";
 import { ProductContext } from "../context/ProductContext";
 import { CustomerContext } from "../context/CustomerContext";
 import styled from "styled-components";
+import FormControl from '@material-ui/core/FormControl';
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
@@ -32,35 +33,42 @@ export default function NewRent() {
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [selectProduct, setSelectProduct] = useState(null);
   const [selectCustomer, setSelectCustomer] = useState(null);
-  const required = document.querySelector('#required');
+
+
+
   function handleSubmit(event) {
     event.preventDefault();
-    // const endDate = document.querySelector("#end-date");
-    // const startDate = document.querySelector("#start-date");
+    const required = document.querySelector('#required');
+    const endDate = document.querySelector("#end-date");
+    const startDate = document.querySelector("#start-date");
+    const productSelect = document.querySelector('#product-select');
+    const customerSelect = document.querySelector('#customer-select');
 
-    if (selectProduct != null) {
-
+    if (selectProduct != null && selectCustomer != null && startDate.value != '' && endDate.value != '') {
       const rentForm = document.querySelector('#rent-form');
       rentForm.reset();
-      console.log(selectProduct)
       setIsSubmitted(true)
       required.style.display = 'none'
     } else {
       required.style.display = 'block'
+
     }
 
   }
+
   return (
     <form onSubmit={handleSubmit} id="rent-form" key={isSubmitted}>
       <p id="required" style={{ display: 'none', color: 'red' }}>* Please fill out every field!</p>
+
       <Autocomplete
+
         onChange={(event, value) => setSelectProduct(value)}
         multiple
         id="product-select"
         options={product}
         disableCloseOnSelect
         clearOnEscape
-        getOptionLabel={(option) => option.name}
+        getOptionLabel={(option) => option.name + " (" + option.id + ")"}
         renderOption={(option, { selected }) => (
           <React.Fragment>
             <Checkbox
@@ -69,16 +77,17 @@ export default function NewRent() {
               style={{ marginRight: 8 }}
               checked={selected}
             />
-            {option.name}
+            {option.name + " (" + option.id + ")"}
           </React.Fragment>
         )}
         style={{ width: 500, margin: '1rem' }}
         renderInput={(params) => (
-          <TextField {...params} variant="outlined" label="Products" placeholder="Select products" />
+          <TextField {...params} variant="outlined" label="Products" id="product-field" placeholder="Select products" />
         )}
       />
+
       <Autocomplete
-        key={isSubmitted}
+
         onChange={(event, value) => setSelectCustomer(value)}
         id="customer-select"
         options={customer}
@@ -90,13 +99,13 @@ export default function NewRent() {
         )}
         style={{ width: 500, margin: '1rem' }}
         renderInput={(params) => (
-          <TextField {...params} variant="outlined" label="Customers" placeholder="Select a customer" required />
+          <TextField {...params} variant="outlined" label="Customers" placeholder="Select a customer" />
         )}
       />
       <div>
         <DateContainer>
           <p>Select start date:</p>
-          <Date id="start-date" type="date" required />
+          <Date id="start-date" type="date" />
         </DateContainer>
 
       </div>
@@ -104,7 +113,7 @@ export default function NewRent() {
         <DateContainer>
 
           <p>Select end date:</p>
-          <Date id="end-date" type="date" required />
+          <Date id="end-date" type="date" />
         </DateContainer>
       </div>
       <Button label="Submit" type="submit" variant="contained" color="primary" style={{ margin: "1rem" }}>
