@@ -29,30 +29,37 @@ const DateContainer = styled.div`
 export default function NewRent() {
   const { product } = useContext(ProductContext);
   const { customer } = useContext(CustomerContext);
-
-  const [selectProduct, setSelectProduct] = useState();
-  const [selectCustomer, setSelectCustomer] = useState();
-
+  const [isSubmitted, setIsSubmitted] = useState(false)
+  const [selectProduct, setSelectProduct] = useState(null);
+  const [selectCustomer, setSelectCustomer] = useState(null);
+  const required = document.querySelector('#required');
   function handleSubmit(event) {
-
-    const productSelect = document.querySelector('#product-select');
-    const customerSelect = document.querySelector('#customer-select');
-    const endDate = document.querySelector("#end-date");
-    const startDate = document.querySelector("#start-date");
     event.preventDefault();
-    console.log(selectProduct);
-    console.log(selectCustomer)
+    // const endDate = document.querySelector("#end-date");
+    // const startDate = document.querySelector("#start-date");
+
+    if (selectProduct != null) {
+
+      const rentForm = document.querySelector('#rent-form');
+      rentForm.reset();
+      console.log(selectProduct)
+      setIsSubmitted(true)
+      required.style.display = 'none'
+    } else {
+      required.style.display = 'block'
+    }
 
   }
   return (
-    <form onSubmit={handleSubmit}>
-
+    <form onSubmit={handleSubmit} id="rent-form" key={isSubmitted}>
+      <p id="required" style={{ display: 'none', color: 'red' }}>* Please fill out every field!</p>
       <Autocomplete
         onChange={(event, value) => setSelectProduct(value)}
         multiple
         id="product-select"
         options={product}
         disableCloseOnSelect
+        clearOnEscape
         getOptionLabel={(option) => option.name}
         renderOption={(option, { selected }) => (
           <React.Fragment>
@@ -71,10 +78,10 @@ export default function NewRent() {
         )}
       />
       <Autocomplete
+        key={isSubmitted}
         onChange={(event, value) => setSelectCustomer(value)}
         id="customer-select"
         options={customer}
-        disableCloseOnSelect
         getOptionLabel={(option) => option.first_name + " " + option.last_name}
         renderOption={(option, { selected }) => (
           <React.Fragment>
@@ -83,13 +90,13 @@ export default function NewRent() {
         )}
         style={{ width: 500, margin: '1rem' }}
         renderInput={(params) => (
-          <TextField {...params} variant="outlined" label="Customers" placeholder="Select a customer" />
+          <TextField {...params} variant="outlined" label="Customers" placeholder="Select a customer" required />
         )}
       />
       <div>
         <DateContainer>
           <p>Select start date:</p>
-          <Date id="start-date" type="date" />
+          <Date id="start-date" type="date" required />
         </DateContainer>
 
       </div>
@@ -97,7 +104,7 @@ export default function NewRent() {
         <DateContainer>
 
           <p>Select end date:</p>
-          <Date id="end-date" type="date" />
+          <Date id="end-date" type="date" required />
         </DateContainer>
       </div>
       <Button label="Submit" type="submit" variant="contained" color="primary" style={{ margin: "1rem" }}>
