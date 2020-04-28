@@ -99,7 +99,11 @@ function ResponsiveDrawer(props) {
               <Route path="/customers" render={() => <CustomerList />} />
             </CustomerTableProvider>
           </CustomerProvider>
-          <Route path="/rent" render={() => <NewRent />} />
+          <ProductProvider>
+            <CustomerProvider>
+              <Route path="/rent" render={() => <NewRent />} />
+            </CustomerProvider>
+          </ProductProvider>
         </main>
       </BrowserRouter>
     </div>
