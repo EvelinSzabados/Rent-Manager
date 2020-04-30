@@ -8,12 +8,11 @@ import Button from "@material-ui/core/Button";
 import { ProductContext } from "../context/ProductContext";
 import { CustomerContext } from "../context/CustomerContext";
 import styled from "styled-components";
-import FormControl from '@material-ui/core/FormControl';
-
+import { addRent } from "./RentDataHandler";
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-const Date = styled.input`
+const DatePicker = styled.input`
  
   width: 30vw;
   padding: 1rem;
@@ -34,21 +33,25 @@ export default function NewRent() {
   const [selectProduct, setSelectProduct] = useState(null);
   const [selectCustomer, setSelectCustomer] = useState(null);
 
-
-
   function handleSubmit(event) {
     event.preventDefault();
     const required = document.querySelector('#required');
     const endDate = document.querySelector("#end-date");
     const startDate = document.querySelector("#start-date");
-    const productSelect = document.querySelector('#product-select');
-    const customerSelect = document.querySelector('#customer-select');
 
-    if (selectProduct != null && selectCustomer != null && startDate.value != '' && endDate.value != '') {
-      const rentForm = document.querySelector('#rent-form');
-      rentForm.reset();
-      setIsSubmitted(true)
-      required.style.display = 'none'
+    if (selectProduct != null && selectCustomer
+      != null && startDate.value != '' && endDate.value != '') {
+      if (endDate.value < startDate.value) {
+        required.innerText = "* Invalid date!"
+        required.style.display = 'block'
+      } else {
+        const rent = { "customer_id": selectCustomer.id, "cost": 600, "start_date": startDate.value, "end_date": endDate.value }
+        addRent(rent)
+        const rentForm = document.querySelector('#rent-form');
+        rentForm.reset();
+        setIsSubmitted(true)
+        required.style.display = 'none'
+      }
     } else {
       required.style.display = 'block'
 
@@ -61,7 +64,6 @@ export default function NewRent() {
       <p id="required" style={{ display: 'none', color: 'red' }}>* Please fill out every field!</p>
 
       <Autocomplete
-
         onChange={(event, value) => setSelectProduct(value)}
         multiple
         id="product-select"
@@ -105,7 +107,7 @@ export default function NewRent() {
       <div>
         <DateContainer>
           <p>Select start date:</p>
-          <Date id="start-date" type="date" />
+          <DatePicker id="start-date" type="date" />
         </DateContainer>
 
       </div>
@@ -113,7 +115,7 @@ export default function NewRent() {
         <DateContainer>
 
           <p>Select end date:</p>
-          <Date id="end-date" type="date" />
+          <DatePicker id="end-date" type="date" />
         </DateContainer>
       </div>
       <Button label="Submit" type="submit" variant="contained" color="primary" style={{ margin: "1rem" }}>
