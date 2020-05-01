@@ -45,7 +45,7 @@ export default function NewRent() {
         required.innerText = "* Invalid date!"
         required.style.display = 'block'
       } else {
-        const rent = { "customer_id": selectCustomer.id, "cost": 600, "start_date": startDate.value, "end_date": endDate.value }
+        const rent = { "customer": selectCustomer, "cost": 600, "start_date": startDate.value, "end_date": endDate.value }
         addRent(rent)
         const rentForm = document.querySelector('#rent-form');
         rentForm.reset();
