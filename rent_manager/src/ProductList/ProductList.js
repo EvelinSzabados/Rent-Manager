@@ -28,7 +28,7 @@ export default function ProductListItems() {
               setState((prevState) => {
                 const data = [...prevState.data];
                 data.push(newData);
-                newData["id"] = 69;
+                console.log(newData)
                 addProduct(newData);
                 return { ...prevState, data };
               });
