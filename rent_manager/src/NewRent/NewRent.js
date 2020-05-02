@@ -1,4 +1,4 @@
-import React, { useState, createContext, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import Checkbox from '@material-ui/core/Checkbox';
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
@@ -8,7 +8,8 @@ import Button from "@material-ui/core/Button";
 import { ProductContext } from "../context/ProductContext";
 import { CustomerContext } from "../context/CustomerContext";
 import styled from "styled-components";
-import { addRent } from "./RentDataHandler";
+import { addRentValidation } from "./AddRent";
+
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
@@ -35,26 +36,9 @@ export default function NewRent() {
 
   function handleSubmit(event) {
     event.preventDefault();
-    const required = document.querySelector('#required');
-    const endDate = document.querySelector("#end-date");
-    const startDate = document.querySelector("#start-date");
-
-    if (selectProduct != null && selectCustomer
-      != null && startDate.value != '' && endDate.value != '') {
-      if (endDate.value < startDate.value) {
-        required.innerText = "* Invalid date!"
-        required.style.display = 'block'
-      } else {
-        const rent = { "customer": selectCustomer, "cost": 600, "start_date": startDate.value, "end_date": endDate.value }
-        addRent(rent)
-        const rentForm = document.querySelector('#rent-form');
-        rentForm.reset();
-        setIsSubmitted(true)
-        required.style.display = 'none'
-      }
-    } else {
-      required.style.display = 'block'
-
+    let valid = addRentValidation(selectProduct, selectCustomer);
+    if (valid) {
+      setIsSubmitted(true)
     }
 
   }
