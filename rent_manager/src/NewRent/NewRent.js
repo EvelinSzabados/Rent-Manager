@@ -7,25 +7,12 @@ import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Button from "@material-ui/core/Button";
 import { ProductContext } from "../context/ProductContext";
 import { CustomerContext } from "../context/CustomerContext";
-import styled from "styled-components";
 import { addRentValidation } from "./AddRent";
+import { DateContainer, DatePicker } from "../Styles/RentStyle";
 
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
-const DatePicker = styled.input`
- 
-  width: 30vw;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  @media (max-width: 600px) {
-    width: 80vw;
-  }
-`;
-const DateContainer = styled.div`
-  margin: 1rem;
-`;
 
 export default function NewRent() {
   const { product } = useContext(ProductContext);
