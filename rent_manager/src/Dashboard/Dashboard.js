@@ -24,6 +24,7 @@ import DashboardStyle from "../Styles/DashboardStyle";
 import { ProductTableProvider } from "../context/ProductTableContext";
 import { CustomerTableProvider } from "../context/CustomerTableContext";
 import { CustomerProvider } from "../context/CustomerContext";
+import { AvailableProductProvider } from "../context/AvailableProductContext"
 
 
 function ResponsiveDrawer(props) {
@@ -99,11 +100,11 @@ function ResponsiveDrawer(props) {
               <Route path="/customers" render={() => <CustomerList />} />
             </CustomerTableProvider>
           </CustomerProvider>
-          <ProductProvider>
+          <AvailableProductProvider>
             <CustomerProvider>
               <Route path="/rent" render={() => <NewRent />} />
             </CustomerProvider>
-          </ProductProvider>
+          </AvailableProductProvider>
         </main>
       </BrowserRouter>
     </div>

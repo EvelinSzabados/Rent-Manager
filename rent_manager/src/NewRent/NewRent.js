@@ -5,7 +5,7 @@ import Autocomplete from '@material-ui/lab/Autocomplete';
 import CheckBoxOutlineBlankIcon from '@material-ui/icons/CheckBoxOutlineBlank';
 import CheckBoxIcon from '@material-ui/icons/CheckBox';
 import Button from "@material-ui/core/Button";
-import { ProductContext } from "../context/ProductContext";
+import { AvailableProductContext } from "../context/AvailableProductContext";
 import { CustomerContext } from "../context/CustomerContext";
 import { addRentValidation } from "./AddRent";
 import { DateContainer, DatePicker } from "../Styles/RentStyle";
@@ -15,7 +15,7 @@ const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 
 export default function NewRent() {
-  const { product } = useContext(ProductContext);
+  const { product } = useContext(AvailableProductContext);
   const { customer } = useContext(CustomerContext);
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [selectProduct, setSelectProduct] = useState(null);
