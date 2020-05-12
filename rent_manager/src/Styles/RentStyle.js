@@ -1,7 +1,7 @@
 import styled from "styled-components";
 export const DatePicker = styled.input`
- 
-  width: 30vw;
+  
+  width: 29rem;
   padding: 1rem;
   border: 1px solid #ccc;
   border-radius: 5px;
@@ -10,5 +10,6 @@ export const DatePicker = styled.input`
   }
 `;
 export const DateContainer = styled.div`
-  margin: 1rem;
+  margin: 1rem;  
+ 
 `;

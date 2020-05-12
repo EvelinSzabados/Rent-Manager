@@ -40,7 +40,7 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
-      <Divider />
+      {/* <Divider /> */}
       <List>
         <MenuItems />
       </List>
@@ -49,7 +49,7 @@ function ResponsiveDrawer(props) {
 
   return (
     <div className={classes.root}>
-      <CssBaseline />
+      {/* <CssBaseline /> */}
 
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>

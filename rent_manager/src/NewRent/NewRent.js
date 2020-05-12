@@ -53,7 +53,7 @@ export default function NewRent() {
             {option.name + " (" + option.id + ")"}
           </React.Fragment>
         )}
-        style={{ width: 500, margin: '1rem' }}
+        style={{ width: '31rem', margin: '1rem' }}
         renderInput={(params) => (
           <TextField {...params} variant="outlined" label="Products" id="product-field" placeholder="Select products" />
         )}
@@ -70,7 +70,7 @@ export default function NewRent() {
             {option.first_name + " " + option.last_name}
           </React.Fragment>
         )}
-        style={{ width: 500, margin: '1rem' }}
+        style={{ width: '31rem', margin: '1rem' }}
         renderInput={(params) => (
           <TextField {...params} variant="outlined" label="Customers" placeholder="Select a customer" />
         )}
