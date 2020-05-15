@@ -10,9 +10,9 @@ export const ProductTableProvider = (props) => {
     const [state, setState] = useState([]);
 
     useEffect(() => {
-        console.log(product)
+
         let categoryObj = {};
-        category.map(category => { categoryObj[category.id] = category.category_name })
+        category.map(category => (categoryObj[category.id] = category.category_name))
 
         setState((oldState) => {
             return { ...oldState, data: product };

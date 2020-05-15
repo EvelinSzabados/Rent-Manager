@@ -8,9 +8,14 @@ export const CustomerProvider = (props) => {
     const [customer, setCustomer] = useState([]);
 
     const fetchAllCustomer = () => {
-        axios.get(url).then((resp) => {
+        axios.defaults.withCredentials = true;
+        axios(url, {
+            method: 'GET',
+            withCredentials: true
+        }).then((resp) => {
             setCustomer(resp.data);
-        });
+        })
+
     };
 
     useEffect(fetchAllCustomer, []);

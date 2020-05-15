@@ -11,27 +11,27 @@ import ReceiptIcon from "@material-ui/icons/Receipt";
 export default function MenuItems() {
   return (
     <React.Fragment>
-      <ListItem button component={Link} to={"/"}>
+      <ListItem button component={Link} to={"/app"}>
         <ListItemIcon>
           <DashboardIcon color="primary" />
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
       </ListItem>
-      <ListItem button component={Link} to={"/products"}>
+      <ListItem button component={Link} to={"/app/products"}>
         <ListItemIcon>
           <ListIcon color="error" />
         </ListItemIcon>
         <ListItemText primary="Products" />
       </ListItem>
 
-      <ListItem button component={Link} to={"/customers"}>
+      <ListItem button component={Link} to={"/app/customers"}>
         <ListItemIcon>
           <PeopleIcon color="primary" />
         </ListItemIcon>
         <ListItemText primary="Customers" />
       </ListItem>
 
-      <ListItem button component={Link} to={"/rent"}>
+      <ListItem button component={Link} to={"/app/rent"}>
         <ListItemIcon>
           <ReceiptIcon color="error" />
         </ListItemIcon>

@@ -3,7 +3,13 @@ const addUrl = "http://localhost:8080/rent/add";
 
 
 export function addRent(rent) {
-    axios.post(addUrl, rent);
+    axios.defaults.withCredentials = true;
+    axios({
+        method: 'POST',
+        url: addUrl,
+        withCredentials: true,
+        data: rent
+    })
 }
 
 export function calculateCost(products, startDate, endDate) {

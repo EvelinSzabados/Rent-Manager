@@ -1,8 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
-import CssBaseline from "@material-ui/core/CssBaseline";
-import Divider from "@material-ui/core/Divider";
 import Drawer from "@material-ui/core/Drawer";
 import Hidden from "@material-ui/core/Hidden";
 import IconButton from "@material-ui/core/IconButton";
@@ -11,7 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { useTheme } from "@material-ui/core/styles";
-import { Route, BrowserRouter } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import MenuItems from "./MenuItems";
 import Charts from "../Charts/Charts";
 import logo from "../Images/logo.svg";
@@ -25,6 +23,8 @@ import { ProductTableProvider } from "../context/ProductTableContext";
 import { CustomerTableProvider } from "../context/CustomerTableContext";
 import { CustomerProvider } from "../context/CustomerContext";
 import { AvailableProductProvider } from "../context/AvailableProductContext"
+import { UserContext } from "../context/UserContext";
+import { logOut } from "../Login/Logout";
 
 
 function ResponsiveDrawer(props) {
@@ -32,6 +32,7 @@ function ResponsiveDrawer(props) {
   const classes = DashboardStyle();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const { user } = useContext(UserContext)
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -40,7 +41,7 @@ function ResponsiveDrawer(props) {
   const drawer = (
     <div>
       <div className={classes.toolbar} />
-      {/* <Divider /> */}
+
       <List>
         <MenuItems />
       </List>
@@ -49,7 +50,7 @@ function ResponsiveDrawer(props) {
 
   return (
     <div className={classes.root}>
-      {/* <CssBaseline /> */}
+
 
       <AppBar position="fixed" className={classes.appBar}>
         <Toolbar>
@@ -61,52 +62,54 @@ function ResponsiveDrawer(props) {
           <Typography variant="h6" noWrap className={classes.title}>
             Rent Manager
           </Typography>
+          <p>Logged in user: <span className="user_span">{user}</span></p>
+          <span className="logout_span"><Link to="/" onClick={logOut} style={{ textDecoration: 'none', color: 'lightblue', border: 'none' }}>Log out</Link></span>
         </Toolbar>
       </AppBar>
-      <BrowserRouter>
-        <nav className={classes.drawer} aria-label="mailbox folders">
-          <Hidden smUp implementation="css">
-            <Drawer container={container} variant="temporary"
-              anchor={theme.direction === "rtl" ? "right" : "left"}
-              open={mobileOpen}
-              onClose={handleDrawerToggle}
-              classes={{ paper: classes.drawerPaper, }}
-              ModalProps={{ keepMounted: true, }}>
-              {drawer}
-            </Drawer>
-          </Hidden>
-          <Hidden xsDown implementation="css">
-            <Drawer
-              classes={{ paper: classes.drawerPaper, }} variant="permanent" open>
-              {drawer}
-            </Drawer>
-          </Hidden>
-        </nav>
 
-        <main className={classes.content}>
-          <div className={classes.toolbar} />
+      <nav className={classes.drawer} aria-label="mailbox folders">
+        <Hidden smUp implementation="css">
+          <Drawer container={container} variant="temporary"
+            anchor={theme.direction === "rtl" ? "right" : "left"}
+            open={mobileOpen}
+            onClose={handleDrawerToggle}
+            classes={{ paper: classes.drawerPaper, }}
+            ModalProps={{ keepMounted: true, }}>
+            {drawer}
+          </Drawer>
+        </Hidden>
+        <Hidden xsDown implementation="css">
+          <Drawer
+            classes={{ paper: classes.drawerPaper, }} variant="permanent" open>
+            {drawer}
+          </Drawer>
+        </Hidden>
+      </nav>
 
-          <Route exact path="/" render={() => <Charts />} />
-          <ProductProvider>
-            <CategoryProvider>
-              <ProductTableProvider>
-                <Route path="/products" render={() => <ProductList />} />
-              </ProductTableProvider>
-            </CategoryProvider>
-          </ProductProvider>
+      <main className={classes.content}>
+        <div className={classes.toolbar} />
 
+        <Route exact path="/app" component={Charts} />
+        <ProductProvider>
+          <CategoryProvider>
+            <ProductTableProvider>
+              <Route path="/app/products" component={ProductList} />
+            </ProductTableProvider>
+          </CategoryProvider>
+        </ProductProvider>
+
+        <CustomerProvider>
+          <CustomerTableProvider>
+            <Route path="/app/customers" component={CustomerList} />
+          </CustomerTableProvider>
+        </CustomerProvider>
+        <AvailableProductProvider>
           <CustomerProvider>
-            <CustomerTableProvider>
-              <Route path="/customers" render={() => <CustomerList />} />
-            </CustomerTableProvider>
+            <Route path="/app/rent" component={NewRent} />
           </CustomerProvider>
-          <AvailableProductProvider>
-            <CustomerProvider>
-              <Route path="/rent" render={() => <NewRent />} />
-            </CustomerProvider>
-          </AvailableProductProvider>
-        </main>
-      </BrowserRouter>
+        </AvailableProductProvider>
+      </main>
+
     </div>
   );
 }

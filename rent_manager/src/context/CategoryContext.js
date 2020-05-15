@@ -8,9 +8,14 @@ export const CategoryProvider = (props) => {
     const [category, setCategory] = useState([]);
 
     const fetchAllCategory = () => {
-        axios.get(url).then((resp) => {
+        axios.defaults.withCredentials = true;
+        axios(url, {
+            method: 'GET',
+            withCredentials: true
+        }).then((resp) => {
             setCategory(resp.data);
-        });
+        })
+
     };
 
     useEffect(fetchAllCategory, []);

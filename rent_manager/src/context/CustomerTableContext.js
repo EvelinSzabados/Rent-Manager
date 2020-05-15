@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import { CustomerContext } from "./CustomerContext";
-import { CategoryContext } from "./CategoryContext";
+
 
 export const CustomerTableContext = createContext();
 

@@ -1,38 +1,84 @@
+html,body{
+  padding:0;
+  margin:0;
+}
 .App {
-  text-align: center;
+  margin: 0 auto;
+}
+.main_logo{
+  margin: 0 auto;
+  max-width: 230px;
+  
+
+}
+.main_header{
+  margin: 20px auto;
+  color: #1D8895;
+}
+.logo_container{
+  margin: 3rem auto;
+  width: 30%;
+  text-align:center;
+}
+.input_message{
+  color: rgb(216, 0, 115);
+}
+.login_input_container{
+  width:30%;
+  margin: 1rem auto;
+  padding:0;
+}
+.login_input{
+  margin: 10px auto;
+  padding: 15px;
+  width: 100%;
+  border-radius: 15px;
+  border: 1px solid #ccc;
+  color: #1D8895;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.login_input:focus{
+  outline: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.submit_button{
+  padding: 10px 4rem;
+  background-color:white;
+  border: 1px solid #ccc;
+  border-radius: 15px;
+  cursor: pointer;
+  color: #1D8895;
+  margin: 20px auto;
+ 
+  font-weight: bold;
+  
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+.submit_button:hover{
+  background-color: #1D8895;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.input_label{
+  margin:2px;
+  text-align: left;
+  color: #ccc;
+ 
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.user_span{
+  font-weight: bold;
+  color:gold;
+  margin: 0 10px;
+  text-transform: capitalize;
+}
+
+.logout_span{
+  margin: 0 20px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  background-color: #164d52;
+}
+.logout_span:hover{
+  background-color: #404040;
+  
+  cursor: pointer;
 }

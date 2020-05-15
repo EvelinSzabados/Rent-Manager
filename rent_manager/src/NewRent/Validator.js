@@ -2,7 +2,7 @@ export const notEmpty = (states) => {
 
 
     for (let state of states) {
-        if (state == null || state == '') {
+        if (state == null || state === '') {
             return false;
         }
 

@@ -8,9 +8,12 @@ export const ProductProvider = (props) => {
   const [product, setProduct] = useState([]);
 
   const fetchAllProduct = () => {
-    axios.get(url).then((resp) => {
-      setProduct(resp.data);
-    });
+    axios.defaults.withCredentials = true;
+    axios(url, {
+      method: 'GET',
+      withCredentials: true
+    }).then((resp) => { setProduct(resp.data) })
+
   };
 
   useEffect(fetchAllProduct, []);
