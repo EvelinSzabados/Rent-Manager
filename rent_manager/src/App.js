@@ -13,14 +13,14 @@ function App() {
 
   return (
     <React.Fragment>
+      <UserProvider>
+        <Route exact path="/" component={Login} />
+        <ThemeProvider theme={theme}>
 
-      <Route exact path="/" component={Login} />
-      <ThemeProvider theme={theme}>
-        <UserProvider>
           <PrivateRoute path="/app" component={Dashboard} />
-        </UserProvider>
-      </ThemeProvider>
 
+        </ThemeProvider>
+      </UserProvider>
 
 
 

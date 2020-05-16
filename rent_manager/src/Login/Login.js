@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
 import Axios from "axios";
-import { LoginContext } from "../context/LoginContext";;
+import { LoginContext } from "../context/LoginContext";
+import { UserContext } from "../context/UserContext";
 export default function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const { setValidLogin } = useContext(LoginContext);
+    const { setUser } = useContext(UserContext);
 
     const login = () => {
         Axios.post(
@@ -19,8 +21,8 @@ export default function Login(props) {
             }
         ).then(res => {
             setMessage("Welcome back, " + res.data);
-
             setValidLogin(true)
+            setUser(res.data)
             setTimeout(function () { props.history.push('/app') }, 1000);
 
         }).catch(() => {
