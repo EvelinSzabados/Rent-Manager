@@ -28,6 +28,11 @@ html,body{
   margin: 1rem auto;
   padding:0;
 }
+.signup_input_container{
+  width:30%;
+  margin: 1rem;
+  padding:0;
+}
 .login_input{
   margin: 10px auto;
   padding: 15px;
@@ -81,4 +86,11 @@ html,body{
   background-color: #404040;
   
   cursor: pointer;
+}
+
+.new_user{
+  display:none;
+}
+.new_user_block{
+  display:block;
 }

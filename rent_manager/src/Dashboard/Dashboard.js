@@ -27,6 +27,8 @@ import { RentPerCategoryProvider } from "../context/RentPerCategoryContext";
 import { UserContext } from "../context/UserContext";
 import { ChartProvider } from "../context/ChartContext";
 import { logOut } from "../Login/Logout";
+import Register from "../Register/Register";
+
 
 
 function ResponsiveDrawer(props) {
@@ -64,7 +66,7 @@ function ResponsiveDrawer(props) {
           <Typography variant="h6" noWrap className={classes.title}>
             Rent Manager
           </Typography>
-          <p>Logged in user: <span className="user_span">{user}</span></p>
+          <p>Logged in user: <span className="user_span">{user.username}</span></p>
           <span className="logout_span"><Link to="/" onClick={logOut} style={{ textDecoration: 'none', color: 'lightblue', border: 'none' }}>Log out</Link></span>
         </Toolbar>
       </AppBar>
@@ -117,6 +119,7 @@ function ResponsiveDrawer(props) {
             <Route path="/app/rent" component={NewRent} />
           </CustomerProvider>
         </AvailableProductProvider>
+        <Route path="/app/register" component={Register} />
       </main>
 
     </div>

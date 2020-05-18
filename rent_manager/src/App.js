@@ -6,7 +6,7 @@ import theme from "./theme";
 import { ThemeProvider } from "@material-ui/core/styles";
 import Login from "./Login/Login";
 import { Route } from "react-router-dom";
-import { PrivateRoute } from "./Login/PrivateRoute";
+// import { PrivateRoute } from "./Login/PrivateRoute";
 import { UserProvider } from "./context/UserContext";
 function App() {
 
@@ -16,9 +16,7 @@ function App() {
       <UserProvider>
         <Route exact path="/" component={Login} />
         <ThemeProvider theme={theme}>
-
-          <PrivateRoute path="/app" component={Dashboard} />
-
+          <Route path="/app" component={Dashboard} />
         </ThemeProvider>
       </UserProvider>
 
