@@ -2,7 +2,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const ChartStyle = makeStyles((theme) => ({
     paper: {
-        margin: 0,
+        margin: '10px',
         padding: "1rem",
     },
     h6: {

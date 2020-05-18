@@ -23,7 +23,9 @@ import { ProductTableProvider } from "../context/ProductTableContext";
 import { CustomerTableProvider } from "../context/CustomerTableContext";
 import { CustomerProvider } from "../context/CustomerContext";
 import { AvailableProductProvider } from "../context/AvailableProductContext"
+import { RentPerCategoryProvider } from "../context/RentPerCategoryContext";
 import { UserContext } from "../context/UserContext";
+import { ChartProvider } from "../context/ChartContext";
 import { logOut } from "../Login/Logout";
 
 
@@ -88,22 +90,29 @@ function ResponsiveDrawer(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-
-        <Route exact path="/app" component={Charts} />
-        <ProductProvider>
-          <CategoryProvider>
-            <ProductTableProvider>
-              <Route path="/app/products" component={ProductList} />
-            </ProductTableProvider>
-          </CategoryProvider>
-        </ProductProvider>
-
-        <CustomerProvider>
-          <CustomerTableProvider>
-            <Route path="/app/customers" component={CustomerList} />
-          </CustomerTableProvider>
-        </CustomerProvider>
         <AvailableProductProvider>
+          <CategoryProvider>
+            <RentPerCategoryProvider>
+              <ChartProvider>
+                <Route exact path="/app" component={Charts} />
+              </ChartProvider>
+            </RentPerCategoryProvider>
+            <ProductProvider>
+
+
+              <ProductTableProvider>
+                <Route path="/app/products" component={ProductList} />
+              </ProductTableProvider>
+
+            </ProductProvider>
+          </CategoryProvider>
+
+          <CustomerProvider>
+            <CustomerTableProvider>
+              <Route path="/app/customers" component={CustomerList} />
+            </CustomerTableProvider>
+          </CustomerProvider>
+
           <CustomerProvider>
             <Route path="/app/rent" component={NewRent} />
           </CustomerProvider>

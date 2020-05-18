@@ -1,31 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
 import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import ChartStyle from "../Styles/ChartStyle";
 import ZingChart from 'zingchart-react';
-
+import { ChartContext } from "../context/ChartContext";
 
 
 export default function Demo() {
-
-  const [state] = useState({
-    config: {
-      type: 'bar',
-      scaleX: {
-
-        label: { text: 'Days' },
-
-        labels: [4, 5, 3, 4, 5, 3, 5, 4, 11]
-      },
-      series: [{
-        values: [4, 5, 3, 4, 5, 3, 5, 4, 11],
-
-      }],
-
-    }
-  })
-
+  const { state } = useContext(ChartContext);
   const classes = ChartStyle();
 
   return (
@@ -39,10 +22,16 @@ export default function Demo() {
       </Grid>
       <Grid item xs={12} md={4}>
         <Paper className={classes.paper}>
-          <Typography className={classes.h6} variant="h6" color="error">
+          <Typography className={classes.h5} variant="h5" color="secondary">
             Notifications:
           </Typography>
-          <Typography variant="h4">4</Typography>
+          <Typography variant="h6">4</Typography>
+        </Paper>
+        <Paper className={classes.paper}>
+          <Typography className={classes.h5} variant="h5" color="error">
+            Out of Operation products:
+          </Typography>
+          <Typography variant="h6">5</Typography>
         </Paper>
       </Grid>
     </Grid>

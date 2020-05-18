@@ -34,7 +34,8 @@ export const ProductTableProvider = (props) => {
                         lookup: categoryObj,
                     }
 
-                ]
+                ],
+
             };
         });
     }, [product, category]);

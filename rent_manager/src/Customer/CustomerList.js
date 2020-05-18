@@ -19,6 +19,7 @@ export default function CustomerList() {
           fontWeight: 'bold',
 
         },
+        exportButton: true
 
       }}
       editable={{
