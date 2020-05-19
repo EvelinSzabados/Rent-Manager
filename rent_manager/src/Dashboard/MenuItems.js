@@ -34,8 +34,13 @@ export default function MenuItems() {
         </ListItemIcon>
         <ListItemText primary="Customers" />
       </ListItem>
-
       <ListItem button component={Link} to={"/app/rent"}>
+        <ListItemIcon>
+          <ReceiptIcon color="error" />
+        </ListItemIcon>
+        <ListItemText primary="Rents" />
+      </ListItem>
+      <ListItem button component={Link} to={"/app/newRent"}>
         <ListItemIcon>
           <ReceiptIcon color="error" />
         </ListItemIcon>

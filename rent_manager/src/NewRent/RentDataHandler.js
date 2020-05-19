@@ -1,5 +1,7 @@
 import axios from "axios";
 const addUrl = "http://localhost:8080/rent/add";
+const modifyUrl = "http://localhost:8080/rent/modify";
+const deleteUrl = "http://localhost:8080/rent/delete";
 
 
 export function addRent(rent) {
@@ -27,3 +29,31 @@ export function calculateCost(products, startDate, endDate) {
 
     return totalCost;
 }
+
+
+export function handleEdit(rent) {
+
+    axios.defaults.withCredentials = true;
+    axios({
+        method: 'PUT',
+        url: modifyUrl,
+        withCredentials: true,
+        data: rent
+    })
+
+}
+export function handleDelete(rent) {
+
+    axios.defaults.withCredentials = true;
+    axios({
+        method: 'DELETE',
+        url: deleteUrl,
+        withCredentials: true,
+        data: rent,
+        headers: {
+            "Content-Type": "application/json",
+        }
+    })
+
+}
+

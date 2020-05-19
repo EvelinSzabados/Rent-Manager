@@ -25,9 +25,12 @@ import { CustomerProvider } from "../context/CustomerContext";
 import { AvailableProductProvider } from "../context/AvailableProductContext"
 import { RentPerCategoryProvider } from "../context/RentPerCategoryContext";
 import { UserContext } from "../context/UserContext";
+import { RentProvider } from "../context/RentContext";
 import { ChartProvider } from "../context/ChartContext";
+import { RentTableProvider } from "../context/RentTableContext";
 import { logOut } from "../Login/Logout";
 import Register from "../Register/Register";
+import RentList from "../NewRent/RentList";
 
 
 
@@ -114,9 +117,13 @@ function ResponsiveDrawer(props) {
               <Route path="/app/customers" component={CustomerList} />
             </CustomerTableProvider>
           </CustomerProvider>
-
+          <RentProvider>
+            <RentTableProvider>
+              <Route path="/app/rent" component={RentList} />
+            </RentTableProvider>
+          </RentProvider>
           <CustomerProvider>
-            <Route path="/app/rent" component={NewRent} />
+            <Route path="/app/newRent" component={NewRent} />
           </CustomerProvider>
         </AvailableProductProvider>
         <Route path="/app/register" component={Register} />
