@@ -52,7 +52,7 @@ export default function MenuItems() {
           <ListItemIcon>
             <PersonAddIcon color="error" />
           </ListItemIcon>
-          <ListItemText primary="Users" />
+          <ListItemText primary="Add user" />
         </ListItem>
       </div>
     </React.Fragment>

@@ -29,7 +29,9 @@ export default function Register() {
 
     };
     return (
+
         <div className="signup_input_container">
+            <h1>Register new user</h1>
             <div>
                 <p className="input_label">Username</p>
                 <input className="login_input"

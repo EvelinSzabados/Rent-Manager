@@ -3,6 +3,9 @@ import React, { useContext } from "react";
 import { RentTableContext } from "../context/RentTableContext";
 import MaterialTable from "material-table";
 import { handleDelete, handleEdit } from "./RentDataHandler";
+import ListItem from "@material-ui/core/ListItem";
+import ListItemIcon from "@material-ui/core/ListItemIcon";
+import ListItemText from "@material-ui/core/ListItemText";
 
 export default function RentList() {
     const [state, setState] = useContext(RentTableContext)
@@ -29,19 +32,28 @@ export default function RentList() {
                         return (
                             <div
                                 style={{
-                                    fontSize: 12,
+                                    fontSize: 13,
                                     textAlign: 'left',
                                     color: '#404040',
-                                    backgroundColor: '#efefef',
                                     padding: '1rem'
                                 }}
-                            >
-                                {rowData.rentedProductsDetails.map(prod => (
-                                    <div>
-                                        <span>ID: {prod.id} </span><span> Name: {prod.name} </span><span> Price: {prod.cost}</span>
-                                    </div>
-                                ))}
+                            ><table style={{ width: '50%', borderColor: '#1D8895' }}>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    {rowData.rentedProductsDetails.map(prod => (
+
+                                        <tr>
+
+                                            <td>{prod.id} </td><td> {prod.name} </td><td> {prod.cost}</td>
+
+                                        </tr>
+
+                                    ))}
+                                </table>
+
                             </div>
+
                         )
                     },
                 }

@@ -33,9 +33,11 @@ export default function NewRent() {
 
   return (
     <form onSubmit={handleSubmit} id="rent-form" key={isSubmitted}>
+      <h1 style={{ margin: '2rem 1rem' }}>Create new rent</h1>
       <p id="required" style={{ display: 'none', color: 'red' }}>* Please fill out every field!</p>
 
       <Autocomplete
+
         onChange={(event, value) => setSelectProduct(value)}
         multiple
         id="product-select"
@@ -94,7 +96,7 @@ export default function NewRent() {
         Submit
         </Button>
 
-    </form>
+    </form >
   );
 }
 
