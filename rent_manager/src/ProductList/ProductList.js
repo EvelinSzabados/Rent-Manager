@@ -23,26 +23,7 @@ export default function ProductListItems() {
 
 
       }}
-      // detailPanel={[
-      //   {
-      //     tooltip: 'Show Name',
-      //     render: rowData => {
-      //       return (
-      //         <div
-      //           style={{
-      //             fontSize: 12,
-      //             textAlign: 'left',
-      //             color: '#404040',
-      //             backgroundColor: '#ccc',
-      //             padding: '1rem'
-      //           }}
-      //         >
-      //           {rowData.name}
-      //         </div>
-      //       )
-      //     },
-      //   }
-      // ]}
+
       editable={{
         onRowAdd: (newData) =>
           new Promise((resolve) => {

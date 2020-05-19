@@ -22,6 +22,30 @@ export default function RentList() {
                 exportButton: true
 
             }}
+            detailPanel={[
+                {
+                    tooltip: 'Show rented products',
+                    render: rowData => {
+                        return (
+                            <div
+                                style={{
+                                    fontSize: 12,
+                                    textAlign: 'left',
+                                    color: '#404040',
+                                    backgroundColor: '#efefef',
+                                    padding: '1rem'
+                                }}
+                            >
+                                {rowData.rentedProductsDetails.map(prod => (
+                                    <div>
+                                        <span>ID: {prod.id} </span><span> Name: {prod.name} </span><span> Price: {prod.cost}</span>
+                                    </div>
+                                ))}
+                            </div>
+                        )
+                    },
+                }
+            ]}
             editable={{
 
                 onRowUpdate: (newData, oldData) =>

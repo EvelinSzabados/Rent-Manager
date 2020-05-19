@@ -95,37 +95,39 @@ function ResponsiveDrawer(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <AvailableProductProvider>
-          <CategoryProvider>
-            <RentPerCategoryProvider>
-              <ChartProvider>
-                <Route exact path="/app" component={Charts} />
-              </ChartProvider>
-            </RentPerCategoryProvider>
-            <ProductProvider>
+        <ProductProvider>
+          <AvailableProductProvider>
+            <CategoryProvider>
+              <RentPerCategoryProvider>
+                <ChartProvider>
+                  <Route exact path="/app" component={Charts} />
+                </ChartProvider>
+              </RentPerCategoryProvider>
+
 
 
               <ProductTableProvider>
                 <Route path="/app/products" component={ProductList} />
               </ProductTableProvider>
 
-            </ProductProvider>
-          </CategoryProvider>
 
-          <CustomerProvider>
-            <CustomerTableProvider>
-              <Route path="/app/customers" component={CustomerList} />
-            </CustomerTableProvider>
-          </CustomerProvider>
-          <RentProvider>
-            <RentTableProvider>
-              <Route path="/app/rent" component={RentList} />
-            </RentTableProvider>
-          </RentProvider>
-          <CustomerProvider>
-            <Route path="/app/newRent" component={NewRent} />
-          </CustomerProvider>
-        </AvailableProductProvider>
+            </CategoryProvider>
+
+            <CustomerProvider>
+              <CustomerTableProvider>
+                <Route path="/app/customers" component={CustomerList} />
+              </CustomerTableProvider>
+            </CustomerProvider>
+            <RentProvider>
+              <RentTableProvider>
+                <Route path="/app/rent" component={RentList} />
+              </RentTableProvider>
+            </RentProvider>
+            <CustomerProvider>
+              <Route path="/app/newRent" component={NewRent} />
+            </CustomerProvider>
+          </AvailableProductProvider>
+        </ProductProvider>
         <Route path="/app/register" component={Register} />
       </main>
 

@@ -1,16 +1,17 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import { RentContext } from "./RentContext";
+import { ProductContext } from "./ProductContext";
 
 
 export const RentTableContext = createContext();
 
 export const RentTableProvider = (props) => {
     const { rent } = useContext(RentContext);
+    const { product } = useContext(ProductContext);
     const [state, setState] = useState([]);
+
     rent.map(rent => {
-
         rent["customer_name"] = rent.customer.first_name + " " + rent.customer.last_name;
-
     })
     useEffect(() => {
 

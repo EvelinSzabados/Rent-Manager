@@ -3,6 +3,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 import PeopleIcon from "@material-ui/icons/People";
 import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import { Link } from "react-router-dom";
@@ -42,14 +43,14 @@ export default function MenuItems() {
       </ListItem>
       <ListItem button component={Link} to={"/app/newRent"}>
         <ListItemIcon>
-          <ReceiptIcon color="error" />
+          <CreateNewFolderIcon color="primary" />
         </ListItemIcon>
         <ListItemText primary="New rent" />
       </ListItem>
       <div className={user.role === "ADMIN" ? "new_user_block" : "new_user"}>
         <ListItem button component={Link} to={"/app/register"}>
           <ListItemIcon>
-            <PersonAddIcon color="primary" />
+            <PersonAddIcon color="error" />
           </ListItemIcon>
           <ListItemText primary="Users" />
         </ListItem>
