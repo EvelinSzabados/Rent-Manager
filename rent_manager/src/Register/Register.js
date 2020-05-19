@@ -3,6 +3,7 @@ import Axios from "axios";
 export default function Register() {
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
+    const [message, setMessage] = useState("");
     const [role, setRole] = useState();
     const signup = () => {
         Axios.post(
@@ -16,12 +17,14 @@ export default function Register() {
                 withCredentials: true
             }
         ).then(res => {
-            console.log(res.data)
+            setMessage("Successful registration!")
             setUsername("")
             setPassword("")
             setRole("")
+            setTimeout(() => { setMessage("") }, 1500)
+
         }).catch(() => {
-            console.log("Error")
+            setMessage("Try again!")
         });
 
     };
@@ -50,16 +53,17 @@ export default function Register() {
 
             </div>
             <div>
-                <p className="input_label">Role</p>
-                <input className="login_input"
-                    type="text"
-                    autoComplete="off"
-                    name="role"
-                    value={role}
-                    onChange={(e) => {
-                        setRole(e.target.value)
-                    }} />
-                {/* <p className="input_message"> {message} </p> */}
+                <div>
+                    <p className="input_label">Role</p>
+                    <select id="role" name="role" className="role_select"
+                        onChange={(e) => { setRole(e.target.value) }}>
+                        <option value="" selected disabled hidden>Choose a role</option>
+                        <option value="ADMIN" >Admin</option>
+                        <option value="USER">User</option>
+                    </select>
+                </div>
+
+                <p className="input_message"> {message} </p>
                 <button className="submit_button"
                     type="submit"
                     onClick={signup} >

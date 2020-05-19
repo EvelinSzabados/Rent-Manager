@@ -94,3 +94,16 @@ html,body{
 .new_user_block{
   display:block;
 }
+
+.role_select{
+  width: 60%;
+  border-radius: 15px;
+  padding: 1rem;
+  background: white;
+  margin: 10px 0;
+  border: 1px solid #ccc;
+  color: #404040;
+}
+.role_select:focus{
+  outline:none;
+}
