@@ -9,11 +9,14 @@ import { Route } from "react-router-dom";
 import { NotificationProvider } from "./context/NotificationContext";
 import { UserProvider } from "./context/UserContext";
 import { ProductProvider } from "./context/ProductContext";
+// import { MuiPickersUtilsProvider } from '@material-ui/pickers';
+// import DateFnsUtils from '@date-io/date-fns';
 function App() {
 
 
   return (
     <React.Fragment>
+      {/* <MuiPickersUtilsProvider utils={DateFnsUtils}> */}
       <ProductProvider>
         <NotificationProvider>
           <UserProvider>
@@ -24,7 +27,7 @@ function App() {
           </UserProvider>
         </NotificationProvider>
       </ProductProvider>
-
+      {/* </MuiPickersUtilsProvider> */}
 
     </React.Fragment>
 

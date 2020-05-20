@@ -53,7 +53,7 @@ html,body{
   cursor: pointer;
   color: #1D8895;
   margin: 20px auto;
- 
+  outline:none;
   font-weight: bold;
   
 }

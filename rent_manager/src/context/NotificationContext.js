@@ -17,7 +17,7 @@ export const NotificationProvider = (props) => {
     }).then((resp) => {
       setNotification(resp.data);
     });
-  }, [notification, product]);
+  }, [product]);
 
   return (
     <NotificationContext.Provider

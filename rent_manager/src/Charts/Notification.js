@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { NotificationContext } from "../context/NotificationContext";
 import { handleEdit } from "./NotificationDataHandler";
+// import { DatePicker, KeyboardDatePicker } from "@material-ui/pickers";
 
 export default function Notification() {
   const { notification } = useContext(NotificationContext);
@@ -27,7 +28,8 @@ export default function Notification() {
                     <td>
                       <button style={{ float: 'right', margin: '0 10px' }}
                         className="submit_button" onClick={(e) => { handleEdit(e, notification.id, product.id) }}>Done</button>
-                      <button style={{ float: 'right', margin: '0 10px' }} className="submit_button">Extend</button>
+                      <button style={{ float: 'right', margin: '0 10px' }} className="submit_button"
+                      >Extend</button>
                     </td>
 
                   </tr>
