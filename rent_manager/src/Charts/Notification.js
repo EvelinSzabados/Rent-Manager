@@ -22,14 +22,14 @@ export default function Notification() {
               {notification.rentedProductsDetails === null ? "" : notification.rentedProductsDetails.map((product) => (
                 <tbody key={"tbody_" + product.id}>
                   <tr key={"tr_" + product.id}>
-                    <td key={"td_id" + product.id}>{product.id}</td>
+                    <td className="notif_id" key={"td_id" + product.id}>{product.id}</td>
                     <td key={"td_name" + product.id}>{product.name}</td>
                     <td key={"td_date" + product.id}>{notification.endDate}</td>
                     <td>
                       <button style={{ float: 'right', margin: '0 10px' }}
-                        className="submit_button" onClick={(e) => { handleEdit(e, notification.id, product.id) }}>Done</button>
-                      <button style={{ float: 'right', margin: '0 10px' }} className="submit_button"
-                      >Extend</button>
+                        className="submit_button" onClick={(e) => { handleEdit(e, product.id) }}>Done</button>
+                      {/* <button style={{ float: 'right', margin: '0 10px' }} className="submit_button"
+                      >Extend</button> */}
                     </td>
 
                   </tr>

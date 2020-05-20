@@ -120,7 +120,11 @@ h1{
 }
 .notification_table{
   width: 100%;
+  
 
+}
+.notif_id{
+  max-width: 30px;
 }
 .notification_table caption{
   text-align:left;
