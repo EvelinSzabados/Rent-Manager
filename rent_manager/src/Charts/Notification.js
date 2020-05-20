@@ -16,14 +16,7 @@ export default function Notification() {
             <table className="notification_table" key={"table_" + notification.id}>
               <caption key={"caption_" + notification.id}>Customer name:{" " + notification.customer.first_name + " " +
                 notification.customer.last_name}</caption>
-              <tbody>
-                <tr className="th">
-                  <td>ID</td>
-                  <td>Product name</td>
-                  <td>End date</td>
 
-                </tr>
-              </tbody>
 
               {notification.rentedProductsDetails === null ? "" : notification.rentedProductsDetails.map((product) => (
                 <tbody key={"tbody_" + product.id}>
