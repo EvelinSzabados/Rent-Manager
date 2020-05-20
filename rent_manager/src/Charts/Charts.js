@@ -3,13 +3,16 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import ChartStyle from "../Styles/ChartStyle";
-import ZingChart from 'zingchart-react';
+import ZingChart from "zingchart-react";
 import { ChartContext } from "../context/ChartContext";
-
+import { UserContext } from "../context/UserContext";
+import { NotificationContext } from "../context/NotificationContext";
+import { Link } from "react-router-dom";
 
 export default function Demo() {
   const { state } = useContext(ChartContext);
   const classes = ChartStyle();
+  const { notification } = useContext(NotificationContext);
 
   return (
     <Grid container spacing={1}>
@@ -25,7 +28,9 @@ export default function Demo() {
           <Typography className={classes.h5} variant="h5" color="secondary">
             Notifications:
           </Typography>
-          <Typography variant="h6">4</Typography>
+          <Link to="/app/products">
+            <Typography variant="h6">{notification.length}</Typography>
+          </Link>
         </Paper>
         <Paper className={classes.paper}>
           <Typography className={classes.h5} variant="h5" color="error">
