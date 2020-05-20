@@ -16,7 +16,7 @@ import logo from "../Images/logo.svg";
 import ProductList from "../ProductList/ProductList";
 import CustomerList from "../Customer/CustomerList";
 import NewRent from "../NewRent/NewRent";
-import { ProductProvider } from "../context/ProductContext";
+
 import { CategoryProvider } from "../context/CategoryContext";
 import DashboardStyle from "../Styles/DashboardStyle";
 import { ProductTableProvider } from "../context/ProductTableContext";
@@ -31,8 +31,13 @@ import { RentTableProvider } from "../context/RentTableContext";
 import { logOut } from "../Login/Logout";
 import Register from "../Register/Register";
 import RentList from "../NewRent/RentList";
-import { NotificationProvider } from "../context/NotificationContext";
+import Avatar from '@material-ui/core/Avatar';
 import Notification from "../Charts/Notification";
+import Badge from '@material-ui/core/Badge';
+import MailIcon from '@material-ui/icons/Mail';
+import { NotificationContext } from "../context/NotificationContext";
+import Tooltip from '@material-ui/core/Tooltip';
+
 
 function ResponsiveDrawer(props) {
   const { container } = props;
@@ -40,6 +45,7 @@ function ResponsiveDrawer(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const { user } = useContext(UserContext);
+  const { notification } = useContext(NotificationContext);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -79,6 +85,16 @@ function ResponsiveDrawer(props) {
           <p>
             Logged in user: <span className="user_span">{user.username}</span>
           </p>
+          <Tooltip title="Show notifications">
+            <IconButton aria-label="Show notifications">
+              <Link style={{ color: '#404040', textDecoration: 'none', margin: '0 1rem' }} to="/app/notification">
+                <Badge color="error" badgeContent={notification.length} showZero>
+                  <Avatar ><MailIcon /></Avatar>
+                </Badge>
+              </Link>
+            </IconButton>
+          </Tooltip>
+
           <span className="logout_span">
             <Link
               to="/"
@@ -122,38 +138,38 @@ function ResponsiveDrawer(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
-        <NotificationProvider>
-          <ProductProvider>
-            <AvailableProductProvider>
-              <CategoryProvider>
-                <RentPerCategoryProvider>
-                  <ChartProvider>
-                    <Route exact path="/app" component={Charts} />
-                    <Route path="/app/notification" component={Notification} />
-                  </ChartProvider>
-                </RentPerCategoryProvider>
 
-                <ProductTableProvider>
-                  <Route path="/app/products" component={ProductList} />
-                </ProductTableProvider>
-              </CategoryProvider>
 
-              <CustomerProvider>
-                <CustomerTableProvider>
-                  <Route path="/app/customers" component={CustomerList} />
-                </CustomerTableProvider>
-              </CustomerProvider>
-              <RentProvider>
-                <RentTableProvider>
-                  <Route path="/app/rent" component={RentList} />
-                </RentTableProvider>
-              </RentProvider>
-              <CustomerProvider>
-                <Route path="/app/newRent" component={NewRent} />
-              </CustomerProvider>
-            </AvailableProductProvider>
-          </ProductProvider>
-        </NotificationProvider>
+        <AvailableProductProvider>
+          <CategoryProvider>
+            <RentPerCategoryProvider>
+              <ChartProvider>
+                <Route exact path="/app" component={Charts} />
+                <Route path="/app/notification" component={Notification} />
+              </ChartProvider>
+            </RentPerCategoryProvider>
+
+            <ProductTableProvider>
+              <Route path="/app/products" component={ProductList} />
+            </ProductTableProvider>
+          </CategoryProvider>
+
+          <CustomerProvider>
+            <CustomerTableProvider>
+              <Route path="/app/customers" component={CustomerList} />
+            </CustomerTableProvider>
+          </CustomerProvider>
+          <RentProvider>
+            <RentTableProvider>
+              <Route path="/app/rent" component={RentList} />
+            </RentTableProvider>
+          </RentProvider>
+          <CustomerProvider>
+            <Route path="/app/newRent" component={NewRent} />
+          </CustomerProvider>
+        </AvailableProductProvider>
+
+
         <Route path="/app/register" component={Register} />
       </main>
     </div>

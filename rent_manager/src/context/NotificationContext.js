@@ -1,4 +1,5 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect, useContext } from "react";
+import { ProductContext } from "./ProductContext";
 import axios from "axios";
 
 export const NotificationContext = createContext();
@@ -6,8 +7,9 @@ export const NotificationContext = createContext();
 export const NotificationProvider = (props) => {
   const url = "http://localhost:8080/rent/notification";
   const [notification, setNotification] = useState([]);
+  const { product } = useContext(ProductContext);
 
-  const fetchAllNotification = () => {
+  useEffect(() => {
     axios.defaults.withCredentials = true;
     axios(url, {
       method: "GET",
@@ -15,13 +17,11 @@ export const NotificationProvider = (props) => {
     }).then((resp) => {
       setNotification(resp.data);
     });
-  };
-
-  useEffect(fetchAllNotification, []);
+  }, [notification, product]);
 
   return (
     <NotificationContext.Provider
-      value={{ notification, fetchAllNotification }}
+      value={{ notification, setNotification }}
     >
       {props.children}
     </NotificationContext.Provider>

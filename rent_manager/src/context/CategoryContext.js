@@ -18,7 +18,7 @@ export const CategoryProvider = (props) => {
 
     };
 
-    useEffect(fetchAllCategory, [category]);
+    useEffect(fetchAllCategory, []);
 
     return (
         <CategoryContext.Provider value={{ category, fetchAllCategory }}>
