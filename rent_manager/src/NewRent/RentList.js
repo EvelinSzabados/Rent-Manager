@@ -1,11 +1,7 @@
-
 import React, { useContext } from "react";
 import { RentTableContext } from "../context/RentTableContext";
 import MaterialTable from "material-table";
 import { handleDelete, handleEdit } from "./RentDataHandler";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemIcon from "@material-ui/core/ListItemIcon";
-import ListItemText from "@material-ui/core/ListItemText";
 
 export default function RentList() {
     const [state, setState] = useContext(RentTableContext)
@@ -22,6 +18,7 @@ export default function RentList() {
                     fontWeight: 'bold',
 
                 },
+                exportAllData: true,
                 exportButton: true
 
             }}

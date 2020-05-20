@@ -21,6 +21,7 @@ export const ProductTableProvider = (props) => {
             return {
                 ...oldState,
                 columns: [
+
                     { title: "Name", field: "name" },
                     {
                         title: "Status",
