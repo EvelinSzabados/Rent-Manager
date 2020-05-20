@@ -36,7 +36,7 @@ export default function Demo() {
           <Typography className={classes.h5} variant="h5" color="error">
             Out of Operation products:
           </Typography>
-          <Typography variant="h6">5</Typography>
+          <Typography variant="h6">55</Typography>
         </Paper>
       </Grid>
     </Grid>
