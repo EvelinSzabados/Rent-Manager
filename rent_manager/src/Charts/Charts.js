@@ -28,7 +28,7 @@ export default function Demo() {
           <Typography className={classes.h5} variant="h5" color="secondary">
             Notifications:
           </Typography>
-          <Link to="/app/products">
+          <Link to="/app/notification">
             <Typography variant="h6">{notification.length}</Typography>
           </Link>
         </Paper>

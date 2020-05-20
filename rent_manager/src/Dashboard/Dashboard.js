@@ -32,6 +32,7 @@ import { logOut } from "../Login/Logout";
 import Register from "../Register/Register";
 import RentList from "../NewRent/RentList";
 import { NotificationProvider } from "../context/NotificationContext";
+import Notification from "../Charts/Notification";
 
 function ResponsiveDrawer(props) {
   const { container } = props;
@@ -128,6 +129,7 @@ function ResponsiveDrawer(props) {
                 <RentPerCategoryProvider>
                   <ChartProvider>
                     <Route exact path="/app" component={Charts} />
+                    <Route path="/app/notification" component={Notification} />
                   </ChartProvider>
                 </RentPerCategoryProvider>
 
