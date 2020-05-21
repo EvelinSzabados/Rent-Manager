@@ -1,5 +1,6 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import { RentContext } from "./RentContext";
+import { bool } from "prop-types";
 
 
 
@@ -23,6 +24,7 @@ export const RentTableProvider = (props) => {
         // today = mm + '/' + dd + '/' + yyyy;
         // console.log(today)
         setState((oldState) => {
+            console.log(rent);
             return { ...oldState, data: rent };
         });
         setState((oldState) => {
@@ -33,7 +35,8 @@ export const RentTableProvider = (props) => {
                     { title: "Total cost (Ft)", field: "cost", type: "numeric" },
                     { title: "Booking date", field: "booking_date", type: "date", editable: 'never' },
                     { title: "Start date", field: "start_date", type: "date" },
-                    { title: "End Date", field: "endDate", type: "date" }
+                    { title: "End Date", field: "endDate", type: "date" },
+                    { title: "Done", field: "back", lookup: { true: true, false: false } }
 
                 ],
 

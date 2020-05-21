@@ -1,9 +1,7 @@
 import React, { useContext } from "react";
 import { NotificationContext } from "../context/NotificationContext";
 import axios from "axios";
-// import { handleEdit } from "./NotificationDataHandler";
 import { ProductContext } from "../context/ProductContext";
-// import { DatePicker, KeyboardDatePicker } from "@material-ui/pickers";
 
 export default function Notification() {
   const { notification } = useContext(NotificationContext);
@@ -38,6 +36,7 @@ export default function Notification() {
                             method: 'POST',
                             url: modifyUrl,
                             withCredentials: true,
+                            data: notification
 
                           })
 
