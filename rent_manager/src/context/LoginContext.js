@@ -17,7 +17,7 @@ export const LoginProvider = props => {
                 setTimeout(() => { history.push(prev) }, 0);
 
             }
-        }).catch(() => {
+        }).catch(function (error) {
             setValidLogin(false)
             history.push('/')
         }

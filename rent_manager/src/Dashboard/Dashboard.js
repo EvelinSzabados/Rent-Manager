@@ -16,7 +16,6 @@ import logo from "../Images/logo.svg";
 import ProductList from "../ProductList/ProductList";
 import CustomerList from "../Customer/CustomerList";
 import NewRent from "../NewRent/NewRent";
-
 import { CategoryProvider } from "../context/CategoryContext";
 import DashboardStyle from "../Styles/DashboardStyle";
 import { ProductTableProvider } from "../context/ProductTableContext";

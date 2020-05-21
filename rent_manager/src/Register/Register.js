@@ -57,7 +57,7 @@ export default function Register() {
             <div>
                 <div>
                     <p className="input_label">Role</p>
-                    <select id="role" name="role" className="role_select"
+                    <select id="role" name="role" className="role_select" value="" defaultValue=""
                         onChange={(e) => { setRole(e.target.value) }}>
                         <option value="" selected disabled hidden>Choose a role</option>
                         <option value="ADMIN" >Admin</option>

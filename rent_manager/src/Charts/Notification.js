@@ -1,10 +1,13 @@
 import React, { useContext } from "react";
 import { NotificationContext } from "../context/NotificationContext";
-import { handleEdit } from "./NotificationDataHandler";
+import axios from "axios";
+// import { handleEdit } from "./NotificationDataHandler";
+import { ProductContext } from "../context/ProductContext";
 // import { DatePicker, KeyboardDatePicker } from "@material-ui/pickers";
 
 export default function Notification() {
   const { notification } = useContext(NotificationContext);
+  const { product, setProduct } = useContext(ProductContext);
   return (
     <React.Fragment>
 
@@ -19,17 +22,35 @@ export default function Notification() {
                 notification.customer.last_name}</caption>
 
 
-              {notification.rentedProductsDetails === null ? "" : notification.rentedProductsDetails.map((product) => (
-                <tbody key={"tbody_" + product.id}>
-                  <tr key={"tr_" + product.id}>
-                    <td className="notif_id" key={"td_id" + product.id}>{product.id}</td>
-                    <td key={"td_name" + product.id}>{product.name}</td>
-                    <td key={"td_date" + product.id}>{notification.endDate}</td>
+              {notification.rentedProductsDetails === null ? "" : notification.rentedProductsDetails.map((rentedProduct) => (
+                <tbody key={"tbody_" + rentedProduct.id}>
+                  <tr key={"tr_" + rentedProduct.id}>
+                    <td className="notif_id" key={"td_id" + rentedProduct.id}>{rentedProduct.id}</td>
+                    <td key={"td_name" + rentedProduct.id}>{rentedProduct.name}</td>
+                    <td key={"td_date" + rentedProduct.id}>{notification.endDate}</td>
                     <td>
                       <button style={{ float: 'right', margin: '0 10px' }}
-                        className="submit_button" onClick={(e) => { handleEdit(e, product.id) }}>Done</button>
-                      {/* <button style={{ float: 'right', margin: '0 10px' }} className="submit_button"
-                      >Extend</button> */}
+                        className="submit_button" onClick={(e) => {
+
+                          const modifyUrl = `http://localhost:8080/product/setStatus/${rentedProduct.id}`;
+                          axios.defaults.withCredentials = true;
+                          axios({
+                            method: 'POST',
+                            url: modifyUrl,
+                            withCredentials: true,
+
+                          })
+
+                          let newProductList = [...product]
+                          newProductList.map(prod => {
+                            if (prod.id === rentedProduct.id) {
+                              prod.status.id = 1;
+                              prod.status.name = 'Available';
+                            }
+                          })
+                          setProduct(newProductList);
+                        }}>Done</button>
+
                     </td>
 
                   </tr>
