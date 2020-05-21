@@ -33,6 +33,9 @@ import Register from "../Register/Register";
 import RentList from "../NewRent/RentList";
 import { NotificationProvider } from "../context/NotificationContext";
 import Notification from "../Charts/Notification";
+import { PDFViewer } from "@react-pdf/renderer";
+import PdfConverter from "../Pdf/PdfConverter";
+import MyDocument from "../Pdf/PdfConverter";
 
 function ResponsiveDrawer(props) {
   const { container } = props;
@@ -122,6 +125,7 @@ function ResponsiveDrawer(props) {
 
       <main className={classes.content}>
         <div className={classes.toolbar} />
+
         <NotificationProvider>
           <ProductProvider>
             <AvailableProductProvider>
@@ -130,6 +134,10 @@ function ResponsiveDrawer(props) {
                   <ChartProvider>
                     <Route exact path="/app" component={Charts} />
                     <Route path="/app/notification" component={Notification} />
+                    <Route path="/app/pdf" component={PdfConverter} />
+                    <PDFViewer>
+                      <MyDocument />
+                    </PDFViewer>
                   </ChartProvider>
                 </RentPerCategoryProvider>
 
@@ -154,7 +162,6 @@ function ResponsiveDrawer(props) {
             </AvailableProductProvider>
           </ProductProvider>
         </NotificationProvider>
-        <Route path="/app/register" component={Register} />
       </main>
     </div>
   );
