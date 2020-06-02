@@ -2,12 +2,15 @@ import React, { useState, useContext } from 'react';
 import Axios from "axios";
 import { LoginContext } from "../context/LoginContext";
 import { UserContext } from "../context/UserContext";
+import { useHistory } from "react-router-dom";
 export default function Login(props) {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [message, setMessage] = useState("");
     const { setValidLogin } = useContext(LoginContext);
     const { setUser } = useContext(UserContext);
+    const history = useHistory();
+
 
     const login = () => {
         Axios.post(
@@ -20,13 +23,13 @@ export default function Login(props) {
                 withCredentials: true
             }
         ).then(res => {
-            setMessage("Welcome back, " + res.data);
+            setMessage("Welcome back, " + res.data.userName);
             setValidLogin(true)
-            setUser(res.data)
-            setTimeout(function () { props.history.push('/app') }, 1000);
+            setUser({ username: res.data.userName, role: res.data.roles[0] })
+            setTimeout(function () { history.push('/app') }, 1000);
 
         }).catch(() => {
-            setMessage("Something went wrong");
+            setMessage("Username or password is wrong!");
             setValidLogin(false)
         });
 
@@ -35,6 +38,7 @@ export default function Login(props) {
     return (
 
         <div className="App" >
+
             <div className="logo_container">
                 <img className="main_logo" src={require("../Images/logocolored.svg")} alt="Logo"></img>
 

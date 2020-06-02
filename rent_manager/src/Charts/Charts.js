@@ -3,13 +3,15 @@ import Paper from "@material-ui/core/Paper";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import ChartStyle from "../Styles/ChartStyle";
-import ZingChart from 'zingchart-react';
+import ZingChart from "zingchart-react";
 import { ChartContext } from "../context/ChartContext";
 
 
 export default function Demo() {
   const { state } = useContext(ChartContext);
   const classes = ChartStyle();
+
+
 
   return (
     <Grid container spacing={1}>
@@ -21,17 +23,12 @@ export default function Demo() {
         </Paper>
       </Grid>
       <Grid item xs={12} md={4}>
-        <Paper className={classes.paper}>
-          <Typography className={classes.h5} variant="h5" color="secondary">
-            Notifications:
-          </Typography>
-          <Typography variant="h6">4</Typography>
-        </Paper>
+
         <Paper className={classes.paper}>
           <Typography className={classes.h5} variant="h5" color="error">
             Out of Operation products:
           </Typography>
-          <Typography variant="h6">5</Typography>
+          <Typography variant="h6">55</Typography>
         </Paper>
       </Grid>
     </Grid>

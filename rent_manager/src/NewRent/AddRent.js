@@ -13,7 +13,7 @@ export const addRentValidation = (selectProduct, selectCustomer) => {
         } else {
             const cost = calculateCost(selectProduct, startDate.value, endDate.value);
             let rentedProducts = selectProduct.map(product => (product.id));
-            const rent = { "customer": selectCustomer, "cost": cost, "start_date": startDate.value, "end_date": endDate.value, "rentedProducts": rentedProducts }
+            const rent = { "customer": selectCustomer, "cost": cost, "start_date": startDate.value, "endDate": endDate.value, "rentedProducts": rentedProducts }
             addRent(rent)
             const rentForm = document.querySelector('#rent-form');
             rentForm.reset();

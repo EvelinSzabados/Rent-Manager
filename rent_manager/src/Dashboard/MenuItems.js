@@ -1,14 +1,19 @@
-import React from "react";
+import React, { useContext } from "react";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import DashboardIcon from "@material-ui/icons/Dashboard";
+import CreateNewFolderIcon from '@material-ui/icons/CreateNewFolder';
 import PeopleIcon from "@material-ui/icons/People";
+import PersonAddIcon from '@material-ui/icons/PersonAdd';
 import { Link } from "react-router-dom";
 import ListIcon from "@material-ui/icons/List";
 import ReceiptIcon from "@material-ui/icons/Receipt";
+import { UserContext } from "../context/UserContext";
 
 export default function MenuItems() {
+  const { user } = useContext(UserContext);
+
   return (
     <React.Fragment>
       <ListItem button component={Link} to={"/app"}>
@@ -30,13 +35,26 @@ export default function MenuItems() {
         </ListItemIcon>
         <ListItemText primary="Customers" />
       </ListItem>
-
       <ListItem button component={Link} to={"/app/rent"}>
         <ListItemIcon>
           <ReceiptIcon color="error" />
         </ListItemIcon>
+        <ListItemText primary="Rents" />
+      </ListItem>
+      <ListItem button component={Link} to={"/app/newRent"}>
+        <ListItemIcon>
+          <CreateNewFolderIcon color="primary" />
+        </ListItemIcon>
         <ListItemText primary="New rent" />
       </ListItem>
+      <div className={user.role === "ADMIN" ? "new_user_block" : "new_user"}>
+        <ListItem button component={Link} to={"/app/register"}>
+          <ListItemIcon>
+            <PersonAddIcon color="error" />
+          </ListItemIcon>
+          <ListItemText primary="Add user" />
+        </ListItem>
+      </div>
     </React.Fragment>
   );
 }

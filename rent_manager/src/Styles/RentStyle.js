@@ -4,7 +4,8 @@ export const DatePicker = styled.input`
   width: 29rem;
   padding: 1rem;
   border: 1px solid #ccc;
-  border-radius: 5px;
+  border-radius: 15px;
+  outline:none;
   @media (max-width: 600px) {
     width: 80vw;
   }

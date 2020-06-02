@@ -5,7 +5,7 @@ export const AvailableProductContext = createContext();
 
 export const AvailableProductProvider = (props) => {
     const url = "http://localhost:8080/product/available";
-    const [product, setProduct] = useState([]);
+    const [availableProduct, setAvailableProduct] = useState([]);
 
     const fetchAllProduct = () => {
         axios.defaults.withCredentials = true;
@@ -13,7 +13,7 @@ export const AvailableProductProvider = (props) => {
             method: 'GET',
             withCredentials: true
         }).then((resp) => {
-            setProduct(resp.data);
+            setAvailableProduct(resp.data);
         })
 
     };
@@ -21,7 +21,7 @@ export const AvailableProductProvider = (props) => {
     useEffect(fetchAllProduct, []);
 
     return (
-        <AvailableProductContext.Provider value={{ product, fetchAllProduct }}>
+        <AvailableProductContext.Provider value={{ availableProduct, fetchAllProduct }}>
             {props.children}
         </AvailableProductContext.Provider>
     );

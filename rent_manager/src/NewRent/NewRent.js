@@ -9,13 +9,14 @@ import { AvailableProductContext } from "../context/AvailableProductContext";
 import { CustomerContext } from "../context/CustomerContext";
 import { addRentValidation } from "./AddRent";
 import { DateContainer, DatePicker } from "../Styles/RentStyle";
-
+import { ProductContext } from "../context/ProductContext";
 const icon = <CheckBoxOutlineBlankIcon fontSize="small" />;
 const checkedIcon = <CheckBoxIcon fontSize="small" />;
 
 
 export default function NewRent() {
-  const { product } = useContext(AvailableProductContext);
+  const { availableProduct } = useContext(AvailableProductContext);
+  const { product, setProduct } = useContext(ProductContext);
   const { customer } = useContext(CustomerContext);
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [selectProduct, setSelectProduct] = useState(null);
@@ -23,22 +24,38 @@ export default function NewRent() {
 
   function handleSubmit(event) {
     event.preventDefault();
+
+    let newProductList = [...product]
+    newProductList.map(prod => {
+      selectProduct.map(selectProd => {
+        if (prod.id === selectProd.id) {
+          prod.status.id = 2;
+          prod.status.name = 'Rented';
+        }
+      })
+
+    })
+    setProduct(newProductList);
     let valid = addRentValidation(selectProduct, selectCustomer);
     if (valid) {
       setIsSubmitted(true)
+
     }
+
 
   }
 
   return (
     <form onSubmit={handleSubmit} id="rent-form" key={isSubmitted}>
+      <h1 style={{ margin: '2rem 1rem' }}>Create new rent</h1>
       <p id="required" style={{ display: 'none', color: 'red' }}>* Please fill out every field!</p>
 
       <Autocomplete
+
         onChange={(event, value) => setSelectProduct(value)}
         multiple
         id="product-select"
-        options={product}
+        options={availableProduct}
         disableCloseOnSelect
         clearOnEscape
         getOptionLabel={(option) => option.name + " (" + option.id + ")"}
@@ -93,7 +110,7 @@ export default function NewRent() {
         Submit
         </Button>
 
-    </form>
+    </form >
   );
 }
 
