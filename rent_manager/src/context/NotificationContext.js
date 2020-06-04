@@ -6,7 +6,7 @@ import { LoginContext } from "../context/LoginContext";
 export const NotificationContext = createContext();
 
 export const NotificationProvider = (props) => {
-  const url = "http://localhost:8080/rent/notification";
+  const url = "http://localhost:8762/rent/rent/notification";
   const [notification, setNotification] = useState([]);
   const { product } = useContext(ProductContext);
   const { validLogin } = useContext(LoginContext);
@@ -21,13 +21,10 @@ export const NotificationProvider = (props) => {
         setNotification(resp.data);
       });
     }
-
   }, [validLogin, product]);
 
   return (
-    <NotificationContext.Provider
-      value={{ notification, setNotification }}
-    >
+    <NotificationContext.Provider value={{ notification, setNotification }}>
       {props.children}
     </NotificationContext.Provider>
   );

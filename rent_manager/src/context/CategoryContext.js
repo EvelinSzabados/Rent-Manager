@@ -4,25 +4,24 @@ import axios from "axios";
 export const CategoryContext = createContext();
 
 export const CategoryProvider = (props) => {
-    const url = "http://localhost:8080/category/all";
-    const [category, setCategory] = useState([]);
+  const url = "http://localhost:8762/category/category/all";
+  const [category, setCategory] = useState([]);
 
-    const fetchAllCategory = () => {
-        axios.defaults.withCredentials = true;
-        axios(url, {
-            method: 'GET',
-            withCredentials: true
-        }).then((resp) => {
-            setCategory(resp.data);
-        })
+  const fetchAllCategory = () => {
+    axios.defaults.withCredentials = true;
+    axios(url, {
+      method: "GET",
+      withCredentials: true,
+    }).then((resp) => {
+      setCategory(resp.data);
+    });
+  };
 
-    };
+  useEffect(fetchAllCategory, []);
 
-    useEffect(fetchAllCategory, []);
-
-    return (
-        <CategoryContext.Provider value={{ category, fetchAllCategory }}>
-            {props.children}
-        </CategoryContext.Provider>
-    );
+  return (
+    <CategoryContext.Provider value={{ category, fetchAllCategory }}>
+      {props.children}
+    </CategoryContext.Provider>
+  );
 };

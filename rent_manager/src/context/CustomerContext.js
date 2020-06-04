@@ -4,25 +4,26 @@ import axios from "axios";
 export const CustomerContext = createContext();
 
 export const CustomerProvider = (props) => {
-    const url = "http://localhost:8080/customer/all";
-    const [customer, setCustomer] = useState([]);
+  const url = "http://localhost:8762/customer/customer/all";
+  const [customer, setCustomer] = useState([]);
 
-    const fetchAllCustomer = () => {
-        axios.defaults.withCredentials = true;
-        axios(url, {
-            method: 'GET',
-            withCredentials: true
-        }).then((resp) => {
-            setCustomer(resp.data);
-        })
+  const fetchAllCustomer = () => {
+    axios.defaults.withCredentials = true;
+    axios(url, {
+      method: "GET",
+      withCredentials: true,
+    }).then((resp) => {
+      setCustomer(resp.data);
+    });
+  };
 
-    };
+  useEffect(fetchAllCustomer, []);
 
-    useEffect(fetchAllCustomer, []);
-
-    return (
-        <CustomerContext.Provider value={{ customer: customer, fetchAllCustomer: fetchAllCustomer }}>
-            {props.children}
-        </CustomerContext.Provider>
-    );
+  return (
+    <CustomerContext.Provider
+      value={{ customer: customer, fetchAllCustomer: fetchAllCustomer }}
+    >
+      {props.children}
+    </CustomerContext.Provider>
+  );
 };
