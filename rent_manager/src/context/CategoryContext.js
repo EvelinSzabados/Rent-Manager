@@ -4,7 +4,7 @@ import axios from "axios";
 export const CategoryContext = createContext();
 
 export const CategoryProvider = (props) => {
-  const url = "http://localhost:8762/category/category/all";
+  const url = "http://localhost:8762/product/product/categories";
   const [category, setCategory] = useState([]);
 
   const fetchAllCategory = () => {
