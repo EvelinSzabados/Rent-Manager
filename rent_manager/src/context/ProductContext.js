@@ -4,7 +4,7 @@ import { LoginContext } from "../context/LoginContext";
 export const ProductContext = createContext();
 
 export const ProductProvider = (props) => {
-  const url = "http://localhost:8762/product/product/all";
+  const url = "https://codecool-rent-manager.herokuapp.com/product/all";
   const [product, setProduct] = useState([]);
   const { validLogin } = useContext(LoginContext);
 

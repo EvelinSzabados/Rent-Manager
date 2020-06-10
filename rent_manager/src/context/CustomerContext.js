@@ -4,7 +4,7 @@ import axios from "axios";
 export const CustomerContext = createContext();
 
 export const CustomerProvider = (props) => {
-  const url = "http://localhost:8762/customer/customer/all";
+  const url = "https://codecool-rent-manager.herokuapp.com/customer/all";
   const [customer, setCustomer] = useState([]);
 
   const fetchAllCustomer = () => {

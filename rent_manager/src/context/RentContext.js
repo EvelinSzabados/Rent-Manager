@@ -4,7 +4,7 @@ import { NotificationContext } from "../context/NotificationContext";
 export const RentContext = createContext();
 
 export const RentProvider = (props) => {
-  const url = "http://localhost:8762/rent/rent/all";
+  const url = "https://codecool-rent-manager.herokuapp.com/rent/all";
   const [rent, setRent] = useState([]);
   const { notification } = useContext(NotificationContext);
 

@@ -1,8 +1,8 @@
 import axios from "axios";
 
-const modifyUrl = "http://localhost:8762/product/product/modify";
-const addUrl = "http://localhost:8762/product/product/add";
-const deleteUrl = "http://localhost:8762/product/product/delete";
+const modifyUrl = "https://codecool-rent-manager.herokuapp.com/product/modify";
+const addUrl = "https://codecool-rent-manager.herokuapp.com/product/add";
+const deleteUrl = "https://codecool-rent-manager.herokuapp.com/product/delete";
 
 export function handleEdit(product) {
   axios.defaults.withCredentials = true;

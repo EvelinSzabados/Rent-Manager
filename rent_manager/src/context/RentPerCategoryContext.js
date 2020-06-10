@@ -4,7 +4,7 @@ import axios from "axios";
 export const RentPerCategoryContext = createContext();
 
 export const RentPerCategoryProvider = (props) => {
-  const url = "http://localhost:8762/rent/rent/rentedProducts";
+  const url = "https://codecool-rent-manager.herokuapp.com/rent/rentedProducts";
   const [rentPerCategory, setRentPerCategory] = useState([]);
 
   const fetchAllProduct = () => {

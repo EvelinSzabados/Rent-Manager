@@ -13,7 +13,7 @@ export default function Login(props) {
 
   const login = () => {
     Axios.post(
-      "http://localhost:8762/auth/login",
+      "https://codecool-rent-manager.herokuapp.com/auth/login",
       {
         username,
         password,

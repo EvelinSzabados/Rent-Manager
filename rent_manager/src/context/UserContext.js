@@ -13,7 +13,7 @@ export const UserProvider = (props) => {
 
   useEffect(() => {
     if (validLogin === true) {
-      Axios.get("http://localhost:8762/auth/getUser", {
+      Axios.get("https://codecool-rent-manager.herokuapp.com/auth/getUser", {
         withCredentials: true,
       })
         .then((res) => {

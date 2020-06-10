@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 export const logOut = (LoginContext) => {
-  Axios.post("http://localhost:8762/auth/logout", {
+  Axios.post("https://codecool-rent-manager.herokuapp.com/auth/logout", {
     withCredentials: true,
   }).then(() => {
     console.log("Logged out");

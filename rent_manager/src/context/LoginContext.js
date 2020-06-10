@@ -9,7 +9,7 @@ export const LoginProvider = (props) => {
   const prev = document.location.pathname;
 
   useEffect(() => {
-    Axios.get("http://localhost:8762/auth/me", {
+    Axios.get("https://codecool-rent-manager.herokuapp.com/auth/me", {
       withCredentials: true,
     })
       .then((res) => {

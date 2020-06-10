@@ -4,7 +4,7 @@ import axios from "axios";
 export const AvailableProductContext = createContext();
 
 export const AvailableProductProvider = (props) => {
-  const url = "http://localhost:8762/product/product/available";
+  const url = "https://codecool-rent-manager.herokuapp.com/product/available";
   const [availableProduct, setAvailableProduct] = useState([]);
 
   const fetchAllProduct = () => {

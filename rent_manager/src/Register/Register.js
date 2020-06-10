@@ -7,7 +7,7 @@ export default function Register() {
   const [role, setRole] = useState();
   const signup = () => {
     Axios.post(
-      "http://localhost:8762/auth/signup",
+      "https://codecool-rent-manager.herokuapp.com/auth/signup",
       {
         username,
         password,

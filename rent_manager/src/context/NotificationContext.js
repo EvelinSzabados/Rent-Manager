@@ -6,7 +6,7 @@ import { LoginContext } from "../context/LoginContext";
 export const NotificationContext = createContext();
 
 export const NotificationProvider = (props) => {
-  const url = "http://localhost:8762/rent/rent/notification";
+  const url = "https://codecool-rent-manager.herokuapp.com/rent/notification";
   const [notification, setNotification] = useState([]);
   const { product } = useContext(ProductContext);
   const { validLogin } = useContext(LoginContext);

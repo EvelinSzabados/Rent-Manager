@@ -1,7 +1,7 @@
 import axios from "axios";
-const addUrl = "http://localhost:8762/rent/rent/add";
-const modifyUrl = "http://localhost:8762/rent/rent/modify";
-const deleteUrl = "http://localhost:8762/rent/rent/delete";
+const addUrl = "https://codecool-rent-manager.herokuapp.com/rent/add";
+const modifyUrl = "https://codecool-rent-manager.herokuapp.com/rent/modify";
+const deleteUrl = "https://codecool-rent-manager.herokuapp.com/rent/delete";
 
 export function addRent(rent) {
   axios.defaults.withCredentials = true;

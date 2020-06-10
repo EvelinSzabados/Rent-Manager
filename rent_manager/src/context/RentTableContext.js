@@ -1,8 +1,5 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import { RentContext } from "./RentContext";
-import { bool } from "prop-types";
-
-
 
 export const RentTableContext = createContext();
 
@@ -16,13 +13,7 @@ export const RentTableProvider = (props) => {
         rent["customer_name"] = rent.customer.first_name + " " + rent.customer.last_name
     ))
     useEffect(() => {
-        // let today = new Date();
-        // let dd = String(today.getDate()).padStart(2, '0');
-        // let mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
-        // let yyyy = today.getFullYear();
 
-        // today = mm + '/' + dd + '/' + yyyy;
-        // console.log(today)
         setState((oldState) => {
             console.log(rent);
             return { ...oldState, data: rent };
