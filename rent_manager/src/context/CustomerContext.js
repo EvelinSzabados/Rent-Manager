@@ -12,6 +12,7 @@ export const CustomerProvider = (props) => {
     axios(url, {
       method: "GET",
       withCredentials: true,
+      crossDomain: true
     }).then((resp) => {
       setCustomer(resp.data);
     });

@@ -20,6 +20,7 @@ export default function Login(props) {
       },
       {
         withCredentials: true,
+        crossDomain: true
       }
     )
       .then((res) => {

@@ -13,6 +13,7 @@ export const RentProvider = (props) => {
     axios(url, {
       method: "GET",
       withCredentials: true,
+      crossDomain: true
     }).then((resp) => {
       setRent(resp.data);
     });

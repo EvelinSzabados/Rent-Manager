@@ -17,6 +17,7 @@ export const NotificationProvider = (props) => {
       axios(url, {
         method: "GET",
         withCredentials: true,
+        crossDomain: true
       }).then((resp) => {
         setNotification(resp.data);
       });
