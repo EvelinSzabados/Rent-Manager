@@ -1,7 +1,7 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import { ProductContext } from "./ProductContext";
 import axios from "axios";
-import { LoginContext } from "./LoginContext";
+import { LoginContext } from "../context/LoginContext";
 
 export const NotificationContext = createContext();
 

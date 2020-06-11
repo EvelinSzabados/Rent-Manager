@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import axios from "axios";
-import { LoginContext } from "./LoginContext";
+import { LoginContext } from "../context/LoginContext";
 export const ProductContext = createContext();
 
 export const ProductProvider = (props) => {
