@@ -12,7 +12,6 @@ export const CategoryProvider = (props) => {
     axios(url, {
       method: "GET",
       withCredentials: true,
-      crossDomain: true
     }).then((resp) => {
       setCategory(resp.data);
     });

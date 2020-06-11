@@ -15,7 +15,6 @@ export const UserProvider = (props) => {
     if (validLogin === true) {
       Axios.get("https://codecool-rent-manager.herokuapp.com/auth/getUser", {
         withCredentials: true,
-        crossDomain: true
       })
         .then((res) => {
           setUser({ username: res.data.userName, role: res.data.roles[0] });

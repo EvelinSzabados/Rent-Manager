@@ -11,7 +11,6 @@ export const LoginProvider = (props) => {
   useEffect(() => {
     Axios.get("https://codecool-rent-manager.herokuapp.com/auth/me", {
       withCredentials: true,
-      crossDomain: true
     })
       .then((res) => {
         if (res.data === true) {
