@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect, useContext } from "react";
 import Axios from "axios";
-import { LoginContext } from "../context/LoginContext";
+import { LoginContext } from "./LoginContext";
 
 export const UserContext = createContext();
 

@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import { RentPerCategoryContext } from "./RentPerCategoryContext";
-import { AvailableProductContext } from "../context/AvailableProductContext";
+import { AvailableProductContext } from "./AvailableProductContext";
 
 export const ChartContext = createContext();
 

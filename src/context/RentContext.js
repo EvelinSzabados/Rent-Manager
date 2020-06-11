@@ -1,6 +1,6 @@
 import React, { useState, createContext, useEffect, useContext } from "react";
 import axios from "axios";
-import { NotificationContext } from "../context/NotificationContext";
+import { NotificationContext } from "./NotificationContext";
 export const RentContext = createContext();
 
 export const RentProvider = (props) => {
