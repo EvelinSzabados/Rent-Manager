@@ -1,11 +1,13 @@
-import React, { useState, createContext, useEffect } from "react";
+import React, { useState, createContext, useEffect, useContext } from "react";
 import axios from "axios";
+import { ProductContext } from "./ProductContext";
 
 export const AvailableProductContext = createContext();
 
 export const AvailableProductProvider = (props) => {
   const url = "https://codecool-rent-manager.herokuapp.com/product/available";
   const [availableProduct, setAvailableProduct] = useState([]);
+  const { product } = useContext(ProductContext)
 
   const fetchAllProduct = () => {
     axios.defaults.withCredentials = true;
@@ -17,7 +19,7 @@ export const AvailableProductProvider = (props) => {
     });
   };
 
-  useEffect(fetchAllProduct, []);
+  useEffect(fetchAllProduct, [product]);
 
   return (
     <AvailableProductContext.Provider
