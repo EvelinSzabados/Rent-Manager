@@ -28,13 +28,13 @@ export default function Demo() {
           <Typography className={classes.h5} variant="h5" color="error">
             Welcome to Rent Manager!
           </Typography>
-          <Typography variant="h6">
+          <Typography>
             Rent Manager is a Codecool Programming School project.
             This is an application created for rental companies. In this project we are working with construction machines.
             The application offers CRUD operations on products, customers and rents. 
             
           </Typography>
-          <Typography variant="h6">
+          <Typography>
             Check out notifications tab to see if any product should be brought back by customer.
           </Typography>
         </Paper>
