@@ -36,6 +36,7 @@ export default function NewRent() {
 
     })
     setProduct(newProductList);
+    console.log(selectCustomer);
     let valid = addRentValidation(selectProduct, selectCustomer);
     if (valid) {
       setIsSubmitted(true)
