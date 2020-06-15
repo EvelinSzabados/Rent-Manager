@@ -4,7 +4,7 @@ import axios from "axios";
 export const CategoryContext = createContext();
 
 export const CategoryProvider = (props) => {
-  const url = "https://codecool-rent-manager.herokuapp.com/categories/all";
+  const url = "https://codecool-rent-manager.herokuapp.com/category/all";
   const [category, setCategory] = useState([]);
 
   const fetchAllCategory = () => {
