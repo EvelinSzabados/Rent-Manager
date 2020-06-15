@@ -22,6 +22,7 @@ export const addRentValidation = (selectProduct, selectCustomer) => {
         endDate: endDate.value,
         rentedProducts: rentedProducts,
       };
+      console.log(rent)
       addRent(rent);
       const rentForm = document.querySelector("#rent-form");
       rentForm.reset();
