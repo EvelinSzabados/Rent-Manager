@@ -16,7 +16,7 @@ export const addRentValidation = (selectProduct, selectCustomer) => {
       const cost = calculateCost(selectProduct, startDate.value, endDate.value);
       let rentedProducts = selectProduct.map((product) => product.id);
       const rent = {
-        customer_id: selectCustomer.id,
+        customer_id: selectCustomer,
         cost: cost,
         start_date: startDate.value,
         endDate: endDate.value,
