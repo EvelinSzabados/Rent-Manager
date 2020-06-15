@@ -82,7 +82,7 @@ function ResponsiveDrawer(props) {
             Rent Manager
           </Typography>
           <p>
-            Logged in user: <span className="user_span">{user.username}</span>
+            Logged in user: <span className="user_span">{localStorage.getItem('user')}</span>
           </p>
           <Tooltip title="Show notifications">
             <IconButton aria-label="Show notifications">
