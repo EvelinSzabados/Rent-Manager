@@ -19,9 +19,8 @@ export const UserProvider = (props) => {
         .then((res) => {
           setUser({ username: res.data.userName, role: res.data.roles[0] });
         })
-        .catch(() => {
-          console.log("Not valid user");
-        });
+        .catch(() => { console.log("") })
+
     }
   }, [validLogin]);
 

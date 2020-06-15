@@ -15,7 +15,7 @@ export const RentTableProvider = (props) => {
     useEffect(() => {
 
         setState((oldState) => {
-            console.log(rent);
+
             return { ...oldState, data: rent };
         });
         setState((oldState) => {
